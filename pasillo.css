@@ -1,0 +1,391 @@
+/* ==================================
+   PASILLO - ESTILO GENERAL
+================================== */
+
+.corridor-page {
+    background:
+        radial-gradient(ellipse at top, #29211c 0%, #11100f 45%, #090909 100%);
+    color: #e8e0d3;
+    min-height: 100vh;
+}
+
+.corridor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    border-bottom: 1px solid rgba(190, 151, 83, 0.25);
+    background: rgba(8, 8, 8, 0.8);
+}
+
+.back-link {
+    color: #c7a66b;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.back-link:hover {
+    color: #fff0c9;
+}
+
+.header-status {
+    color: #a69a87;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+}
+
+.status-light {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: #6fcf83;
+    box-shadow: 0 0 9px #6fcf83;
+}
+
+.corridor-container {
+    width: min(1200px, 88%);
+    margin: auto;
+}
+
+.corridor-intro {
+    padding: 75px 0 45px;
+    max-width: 780px;
+}
+
+.section-tag {
+    color: #b78d4e;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+}
+
+.corridor-intro h1 {
+    margin: 12px 0;
+    color: #e4c58e;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    letter-spacing: 5px;
+}
+
+.corridor-intro p {
+    color: #bcb3a7;
+    line-height: 1.7;
+}
+
+.corridor-intro .warning-text {
+    margin-top: 22px;
+    padding: 14px 18px;
+    border-left: 3px solid #a94d43;
+    background: rgba(130, 39, 32, 0.12);
+    color: #d28b7f;
+    font-size: 0.88rem;
+}
+
+/* ==================================
+   SECCIÓN DE PUERTAS
+================================== */
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0 25px;
+    border-bottom: 1px solid rgba(190, 151, 83, 0.2);
+    padding-bottom: 15px;
+}
+
+.section-heading h2 {
+    color: #d7c29e;
+    font-size: 1.15rem;
+    letter-spacing: 2px;
+}
+
+.section-heading span {
+    color: #887b69;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.doors-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.door-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 390px;
+    padding: 27px;
+    overflow: hidden;
+    border: 1px solid rgba(190, 151, 83, 0.25);
+    border-radius: 5px;
+    background: linear-gradient(145deg, #211e1a, #111110 75%);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.25s, border-color 0.25s;
+}
+
+.door-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(211, 172, 105, 0.65);
+}
+
+.door-number {
+    color: #8d806d;
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+}
+
+.door-icon {
+    margin: 17px 0 8px;
+    color: #c4a16c;
+    font-size: 2.3rem;
+}
+
+.door-card h3 {
+    margin: 0;
+    color: #e5d3b2;
+    font-size: 1.55rem;
+    letter-spacing: 2px;
+}
+
+.door-subtitle {
+    margin: 5px 0 17px;
+    color: #9c9180;
+    font-size: 0.85rem;
+}
+
+.door-status {
+    align-self: flex-start;
+    margin-bottom: 15px;
+    padding: 7px 10px;
+    border: 1px solid rgba(175, 83, 68, 0.35);
+    background: rgba(139, 45, 36, 0.12);
+    color: #d58c7d;
+    font-size: 0.67rem;
+    letter-spacing: 1px;
+}
+
+.door-description {
+    flex: 1;
+    color: #b5ada2;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.door-button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 13px;
+    border: 1px solid #8f7044;
+    border-radius: 3px;
+    background: rgba(157, 112, 54, 0.12);
+    color: #e0c18b;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.door-button:hover {
+    background: #a47a42;
+    color: #100e0b;
+}
+
+.door-message {
+    display: none;
+    margin-top: 15px;
+    padding: 13px;
+    border-left: 3px solid #b65a4c;
+    background: rgba(142, 50, 41, 0.13);
+    color: #e4a397;
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+.door-message.visible {
+    display: block;
+    animation: messageAppear 0.3s ease;
+}
+
+@keyframes messageAppear {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================================
+   PERSONALIDAD VISUAL DE LAS PUERTAS
+================================== */
+
+.door-ambia {
+    border-top: 3px solid #9d4a43;
+}
+
+.door-ambia .door-icon {
+    color: #b85a50;
+}
+
+.door-ruben {
+    border-top: 3px solid #76b9d5;
+    background: linear-gradient(145deg, #18252b, #101719 75%);
+}
+
+.door-ruben .door-icon {
+    color: #8dd7f2;
+}
+
+.door-bryan {
+    border-top: 3px solid #b9a16e;
+}
+
+.door-bryan .door-icon {
+    color: #d8c28e;
+}
+
+.door-fran {
+    border-top: 3px solid #a77bd5;
+    background: linear-gradient(145deg, #251c30, #121016 75%);
+}
+
+.door-fran .door-icon {
+    color: #c59af1;
+}
+
+.door-nextor {
+    border-top: 3px solid #b86c39;
+    background: linear-gradient(145deg, #2b1e18, #14100e 75%);
+}
+
+.door-nextor .door-icon {
+    color: #f08b4d;
+}
+
+.door-zairon {
+    border-top: 3px solid #c59b4d;
+    background: linear-gradient(145deg, #292319, #12110e 75%);
+}
+
+.door-zairon .door-icon {
+    color: #e6c16e;
+}
+
+/* ==================================
+   CÓDIGO DE ZAIRON
+================================== */
+
+.code-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.code-area label {
+    color: #b99b63;
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+}
+
+.code-area input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #6e5834;
+    border-radius: 3px;
+    outline: none;
+    background: #0b0b09;
+    color: #f0d69f;
+    text-align: center;
+    letter-spacing: 7px;
+    font-size: 1.1rem;
+}
+
+.code-area input:focus {
+    border-color: #d5ad63;
+    box-shadow: 0 0 10px rgba(213, 173, 99, 0.15);
+}
+
+.code-area .door-button {
+    margin-top: 0;
+}
+
+/* ==================================
+   TERMINAL DE A.R.M.Y
+================================== */
+
+.corridor-terminal {
+    margin: 65px 0 50px;
+    padding: 28px;
+    border: 1px solid rgba(190, 151, 83, 0.3);
+    background: rgba(9, 12, 11, 0.85);
+    box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.3);
+}
+
+.terminal-header {
+    color: #78bd8b;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+}
+
+.corridor-terminal h2 {
+    margin: 20px 0 12px;
+    color: #d9c49e;
+    font-size: 1rem;
+    letter-spacing: 2px;
+}
+
+.corridor-terminal p {
+    color: #c2b9aa;
+    line-height: 1.7;
+}
+
+.terminal-signature {
+    display: block;
+    margin-top: 18px;
+    color: #8d806d;
+    font-size: 0.7rem;
+    text-align: right;
+}
+
+.corridor-footer {
+    padding: 25px;
+    border-top: 1px solid rgba(190, 151, 83, 0.2);
+    color: #766b5b;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
+
+/* ==================================
+   RESPONSIVE
+================================== */
+
+@media (max-width: 700px) {
+    .corridor-header {
+        align-items: flex-start;
+        gap: 15px;
+        flex-direction: column;
+    }
+
+    .doors-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .corridor-intro {
+        padding-top: 50px;
+    }
+}

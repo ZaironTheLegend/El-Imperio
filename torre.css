@@ -1,0 +1,435 @@
+
+/* =====================================
+   TORRE DEL NIGROMANTE
+===================================== */
+
+.tower-page {
+    --tower-purple: #a783c4;
+    --tower-light: #d0b3e4;
+    --tower-green: #638b70;
+    --tower-red: #a34e57;
+
+    background: #100d15;
+}
+
+
+/* CABECERA */
+
+.tower-back {
+    color: #b9a7c5;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+}
+
+.tower-back:hover {
+    color: var(--tower-light);
+}
+
+.tower-status {
+    color: #a783c4;
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+}
+
+.tower-light {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 7px;
+    border-radius: 50%;
+    background: #a783c4;
+    box-shadow: 0 0 10px #a783c4;
+}
+
+
+/* PORTADA */
+
+.tower-hero {
+    min-height: 620px;
+    padding: 110px 10%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 80% 45%,
+            rgba(105, 64, 135, 0.23),
+            transparent 55%
+        ),
+        linear-gradient(
+            120deg,
+            #100d15,
+            #211829
+        );
+
+    border-bottom: 1px solid rgba(167, 131, 196, 0.3);
+}
+
+.tower-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.12;
+
+    background-image:
+        linear-gradient(
+            rgba(167, 131, 196, 0.2) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(167, 131, 196, 0.2) 1px,
+            transparent 1px
+        );
+
+    background-size: 60px 60px;
+}
+
+.tower-hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+}
+
+.tower-eyebrow {
+    color: var(--tower-purple);
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    margin-bottom: 18px;
+}
+
+.tower-hero h1 {
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: normal;
+    line-height: 1.1;
+    letter-spacing: 2px;
+}
+
+.tower-hero h1 span {
+    display: block;
+    color: var(--tower-light);
+}
+
+.tower-line {
+    width: 75px;
+    height: 2px;
+    background: var(--tower-purple);
+    margin: 27px 0;
+}
+
+.tower-hero-content > p:not(.tower-eyebrow) {
+    max-width: 550px;
+    color: #b9afc1;
+}
+
+.tower-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 14px 22px;
+    border: 1px solid var(--tower-purple);
+    color: var(--tower-light);
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.tower-button:hover {
+    background: var(--tower-purple);
+    color: #100d15;
+    box-shadow: 0 0 25px rgba(167, 131, 196, 0.25);
+}
+
+.tower-rune {
+    position: absolute;
+    right: 15%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 210px;
+    color: var(--tower-purple);
+    opacity: 0.18;
+}
+
+.tower-coordinates {
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    color: #817587;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+
+/* SECCIONES */
+
+.tower-section {
+    padding: 90px 10%;
+}
+
+.tower-heading {
+    margin-bottom: 40px;
+}
+
+.tower-heading h2 {
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+.tower-description {
+    max-width: 800px;
+    color: #aaa1b1;
+}
+
+.tower-description p {
+    margin-bottom: 20px;
+}
+
+
+/* DEPENDENCIAS */
+
+.tower-areas {
+    background: #17131c;
+}
+
+.tower-area-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tower-area {
+    min-height: 230px;
+    padding: 28px;
+    background: #211b29;
+    border: 1px solid rgba(167, 131, 196, 0.2);
+    transition: 0.3s;
+}
+
+.tower-area:hover {
+    transform: translateY(-5px);
+    border-color: var(--tower-purple);
+}
+
+.area-icon {
+    display: block;
+    color: var(--tower-light);
+    font-size: 34px;
+    margin-bottom: 18px;
+}
+
+.tower-area h3 {
+    font-size: 17px;
+    letter-spacing: 1px;
+}
+
+.tower-area p {
+    margin-top: 12px;
+    color: #aaa1b1;
+    font-size: 13px;
+}
+
+
+/* ESQUELETOS */
+
+.skeleton-section {
+    background:
+        linear-gradient(
+            120deg,
+            #100d15,
+            #19131d
+        );
+}
+
+.tower-subtitle {
+    color: #aaa1b1;
+    font-style: italic;
+}
+
+.skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.skeleton-card {
+    padding: 35px;
+    background: #211b29;
+    border: 1px solid rgba(167, 131, 196, 0.25);
+    transition: 0.3s;
+}
+
+.skeleton-card:hover {
+    border-color: var(--tower-purple);
+    transform: translateY(-5px);
+}
+
+.skeleton-symbol {
+    color: var(--tower-light);
+    font-size: 45px;
+}
+
+.skeleton-card h3 {
+    margin-top: 10px;
+    font-size: 25px;
+    letter-spacing: 2px;
+}
+
+.skeleton-role {
+    margin: 5px 0 22px;
+    color: var(--tower-purple);
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+.skeleton-data {
+    padding: 15px;
+    background: #151119;
+    color: #b9afc1;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+}
+
+.skeleton-data p {
+    margin: 7px 0;
+}
+
+.skeleton-warning {
+    display: inline-block;
+    margin-top: 22px;
+    color: #c77a7a;
+    font-family: Arial, sans-serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+}
+
+
+/* REGISTRO DE INCIDENTES */
+
+.incident-section {
+    background: #17131c;
+}
+
+.incident-terminal {
+    padding: 30px;
+    background: #0c0b10;
+    border: 1px solid rgba(167, 131, 196, 0.3);
+    font-family: monospace;
+}
+
+.incident-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #352a3e;
+    color: var(--tower-light);
+    font-size: 11px;
+}
+
+.incident-indicator {
+    color: var(--tower-green);
+}
+
+.incident-entry {
+    display: flex;
+    gap: 15px;
+    padding: 13px 0;
+    border-bottom: 1px solid #29232e;
+    color: #b9afc1;
+    font-size: 12px;
+}
+
+.incident-entry span {
+    color: var(--tower-purple);
+    white-space: nowrap;
+}
+
+.incident-footer {
+    margin-top: 30px;
+    padding: 20px;
+    background: #211b29;
+    border-left: 2px solid var(--tower-purple);
+}
+
+.incident-footer span {
+    color: var(--tower-purple);
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.incident-footer p {
+    margin-top: 10px;
+    color: #d0b3e4;
+    font-style: italic;
+}
+
+
+/* REGRESO */
+
+.tower-return {
+    padding: 90px 20px;
+    text-align: center;
+    background: #100d15;
+}
+
+.tower-return h2 {
+    font-size: clamp(20px, 3vw, 30px);
+    font-weight: normal;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+    .tower-area-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .tower-rune {
+        right: 5%;
+        font-size: 150px;
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .tower-status {
+        display: none;
+    }
+
+    .tower-hero {
+        min-height: 570px;
+        padding: 80px 8%;
+    }
+
+    .tower-rune {
+        right: -25px;
+        font-size: 120px;
+        opacity: 0.12;
+    }
+
+    .tower-section {
+        padding: 70px 8%;
+    }
+
+    .tower-area-grid,
+    .skeleton-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tower-heading h2 {
+        font-size: 23px;
+    }
+
+}

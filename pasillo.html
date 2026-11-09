@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Imperio | Pasillo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pasillo.css">
+    <script src="pasillo.js" defer></script>
+</head>
+
+<body class="corridor-page">
+
+    <header class="corridor-header">
+        <a href="index.html" class="back-link">← VOLVER AL IMPERIO</a>
+        <div class="header-status">
+            <span class="status-light"></span>
+            SISTEMA INTERNO ACTIVO
+        </div>
+    </header>
+
+    <main class="corridor-container">
+
+        <section class="corridor-intro">
+            <p class="section-tag">EDIFICIO PRINCIPAL / PLANTA RESIDENCIAL</p>
+            <h1>EL PASILLO</h1>
+            <p>
+                Zona residencial del Imperio. Aquí se encuentran las habitaciones
+                privadas de sus miembros.
+            </p>
+            <p class="warning-text">
+                ADVERTENCIA: el acceso a las habitaciones está restringido.
+                No todos sus ocupantes agradecen las visitas.
+            </p>
+        </section>
+
+        <section class="doors-section">
+            <div class="section-heading">
+                <h2>HABITACIONES REGISTRADAS</h2>
+                <span>6 PUERTAS DETECTADAS</span>
+            </div>
+
+            <div class="doors-grid">
+
+                <!-- AMBIA -->
+                <article class="door-card door-ambia">
+                    <div class="door-number">HABITACIÓN 01</div>
+                    <div class="door-icon">⚔</div>
+                    <h3>AMBIA</h3>
+                    <p class="door-subtitle">El demonio exmilitar</p>
+                    <div class="door-status">ACCESO DESACONSEJADO</div>
+                    <p class="door-description">
+                        No parece buena idea molestar a quien ha sobrevivido
+                        a demasiadas guerras.
+                    </p>
+                    <button class="door-button" data-door="ambia">
+                        INTENTAR ACCEDER
+                    </button>
+                    <div class="door-message" id="message-ambia" aria-live="polite"></div>
+                </article>
+
+                <!-- RUBÉN -->
+                <article class="door-card door-ruben">
+                    <div class="door-number">HABITACIÓN 02</div>
+                    <div class="door-icon">❄</div>
+                    <h3>RUBÉN</h3>
+                    <p class="door-subtitle">El cocinero de hielo</p>
+                    <div class="door-status">CONGELADA</div>
+                    <p class="door-description">
+                        Una gruesa capa de hielo cubre la puerta y el pomo.
+                        Parece que nadie tiene prisa por salir.
+                    </p>
+                    <button class="door-button" data-door="ruben">
+                        INTENTAR ACCEDER
+                    </button>
+                    <div class="door-message" id="message-ruben" aria-live="polite"></div>
+                </article>
+
+                <!-- BRYAN -->
+                <article class="door-card door-bryan">
+                    <div class="door-number">HABITACIÓN 03</div>
+                    <div class="door-icon">✠</div>
+                    <h3>BRYAN</h3>
+                    <p class="door-subtitle">El caballero templario</p>
+                    <div class="door-status">CERRADA CON LLAVE</div>
+                    <p class="door-description">
+                        La puerta está cerrada. Desde el otro lado llegan
+                        sonidos difíciles de identificar.
+                    </p>
+                    <button class="door-button" data-door="bryan">
+                        INTENTAR ACCEDER
+                    </button>
+                    <div class="door-message" id="message-bryan" aria-live="polite"></div>
+                </article>
+
+                <!-- FRAN -->
+                <article class="door-card door-fran">
+                    <div class="door-number">HABITACIÓN 04</div>
+                    <div class="door-icon">✦</div>
+                    <h3>FRAN</h3>
+                    <p class="door-subtitle">El niño mágico</p>
+                    <div class="door-status">PROTECCIÓN MÁGICA</div>
+                    <p class="door-description">
+                        Un hechizo rodea la entrada. La puerta ni siquiera
+                        parece reconocer que estás ahí.
+                    </p>
+                    <button class="door-button" data-door="fran">
+                        INTENTAR ACCEDER
+                    </button>
+                    <div class="door-message" id="message-fran" aria-live="polite"></div>
+                </article>
+
+                <!-- NEXTOR -->
+                <article class="door-card door-nextor">
+                    <div class="door-number">HABITACIÓN 05</div>
+                    <div class="door-icon">🔥</div>
+                    <h3>NEXTOR</h3>
+                    <p class="door-subtitle">El zorro esmeralda explosivo</p>
+                    <div class="door-status">TEMPERATURA CRÍTICA</div>
+                    <p class="door-description">
+                        El pomo desprende un calor preocupante. Se recomienda
+                        no tocarlo bajo ninguna circunstancia.
+                    </p>
+                    <button class="door-button" data-door="nextor">
+                        INTENTAR ACCEDER
+                    </button>
+                    <div class="door-message" id="message-nextor" aria-live="polite"></div>
+                </article>
+
+                <!-- ZAIRON -->
+                <article class="door-card door-zairon">
+                    <div class="door-number">HABITACIÓN 06</div>
+                    <div class="door-icon">★</div>
+                    <h3>ZAIRON</h3>
+                    <p class="door-subtitle">Fundador y líder del Imperio</p>
+                    <div class="door-status">SEGURIDAD MÁXIMA</div>
+                    <p class="door-description">
+                        Un teclado numérico protege la entrada. Una torreta
+                        automática parece estar vigilando tu posición.
+                    </p>
+
+                    <div class="code-area">
+                        <label for="zairon-code">CÓDIGO DE AUTORIZACIÓN</label>
+                        <input
+                            type="password"
+                            id="zairon-code"
+                            inputmode="numeric"
+                            maxlength="12"
+                            placeholder="••••••"
+                            autocomplete="off"
+                        >
+                        <button class="door-button" id="zairon-submit">
+                            INTRODUCIR CÓDIGO
+                        </button>
+                    </div>
+
+                    <div class="door-message" id="message-zairon" aria-live="polite"></div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="corridor-terminal">
+            <div class="terminal-header">
+                <span class="status-light"></span>
+                TERMINAL DE SEGURIDAD
+            </div>
+            <h2>AVISO DE A.R.M.Y</h2>
+            <p id="army-message">
+                «Bienvenido al pasillo residencial. Le recomiendo respetar
+                la privacidad de los miembros del Imperio.»
+            </p>
+            <span class="terminal-signature">— A.R.M.Y / SISTEMA CENTRAL</span>
+        </section>
+
+    </main>
+
+    <footer class="corridor-footer">
+        EL IMPERIO · ZONA RESIDENCIAL · ACCESO SUPERVISADO
+    </footer>
+
+</body>
+</html>
