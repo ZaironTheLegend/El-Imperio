@@ -4,7 +4,7 @@
 
 const doorMessages = {
     ambia: {
-        message: "Un mierda que te comes, imbecil.",
+        message: "Un mierda que te comes, gilipollas.",
         army: "Le recomiendo que no vuelva a molestar al señor Ambia."
     },
 
@@ -29,6 +29,24 @@ const doorMessages = {
     }
 };
 
+// ==================================
+// SISTEMA DE SONIDO
+// ==================================
+
+function playDoorAudio(doorName) {
+
+    const audio = document.getElementById(`audio-${doorName}`);
+
+    if (!audio) return;
+
+    audio.currentTime = 0;
+
+    audio.play().catch(error => {
+        console.error("No se pudo reproducir el audio:", error);
+    });
+
+}
+
 
 // ==================================
 // INTENTOS DE ACCESO
@@ -46,6 +64,11 @@ doorButtons.forEach(button => {
 
         showDoorMessage(doorName, door.message);
         updateArmyMessage(door.army);
+
+        // Reproducir sonidos de Ambia y Rubén
+        if (doorName === "ambia" || doorName === "ruben") {
+            playDoorAudio(doorName);
+        }
 
     });
 });

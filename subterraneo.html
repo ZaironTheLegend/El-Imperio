@@ -10,183 +10,494 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="subterraneo.css">
+
     <script src="subterraneo.js" defer></script>
 </head>
 
 <body class="underground-page">
 
-    <header class="topbar">
+<header class="topbar">
 
-        <a href="index.html" class="logo">
-            <span class="logo-symbol">✦</span>
-            <span>EL IMPERIO</span>
-        </a>
+    <a href="index.html" class="logo">
+        <span class="logo-symbol">✦</span>
+        <span>EL IMPERIO</span>
+    </a>
 
-        <div class="underground-status">
-            <span class="red-light"></span>
-            SISTEMA DE SEGURIDAD ACTIVO
-        </div>
+    <div class="underground-status">
+        <span class="red-light"></span>
+        SISTEMA DE SEGURIDAD ACTIVO
+    </div>
 
-        <a href="index.html" class="underground-back">
-            ← SALIR
-        </a>
+    <a href="index.html" class="underground-back">
+        ← SALIR
+    </a>
 
-    </header>
+</header>
 
+<main>
 
-    <main>
+    <!-- =================================
+         ACCESO RESTRINGIDO
+    ================================== -->
 
-        <!-- AVISO DE SEGURIDAD -->
+    <section class="access-screen" id="accessScreen">
 
-        <section class="access-screen">
+        <div class="access-content">
 
-            <div class="access-content">
-
-                <div class="security-emblem">
-                    <span>!</span>
-                </div>
-
-                <p class="access-label">
-                    A.R.M.Y · PROTOCOLO DE SEGURIDAD
-                </p>
-
-                <h1>
-                    ACCESO
-                    <span>DENEGADO</span>
-                </h1>
-
-                <div class="access-line"></div>
-
-                <p class="access-description">
-                    No dispones de autorización para visualizar
-                    esta instalación.
-                </p>
-
-                <div class="access-information">
-
-                    <div>
-                        <span>INSTALACIÓN</span>
-                        <strong>SUBTERRÁNEO</strong>
-                    </div>
-
-                    <div>
-                        <span>NIVEL DE ACCESO</span>
-                        <strong>RESTRINGIDO</strong>
-                    </div>
-
-                    <div>
-                        <span>RESPONSABLE</span>
-                        <strong>ZAIRON</strong>
-                    </div>
-
-                    <div>
-                        <span>SUPERVISIÓN</span>
-                        <strong>A.R.M.Y</strong>
-                    </div>
-
-                </div>
-
-                <button id="authorizationButton"
-                        class="authorization-button">
-                    SOLICITAR AUTORIZACIÓN
-                </button>
-
-                <a href="index.html" class="exit-button">
-                    REGRESAR AL ARCHIVO CENTRAL
-                </a>
-
+            <div class="security-emblem">
+                <span>!</span>
             </div>
 
-        </section>
-
-
-        <!-- TERMINAL DE A.R.M.Y -->
-
-        <section class="army-terminal-section">
-
-            <div class="army-terminal">
-
-                <div class="terminal-header">
-
-                    <div class="terminal-title">
-                        <span class="terminal-icon">A</span>
-
-                        <div>
-                            <strong>A.R.M.Y</strong>
-                            <span>ASISTENTE CENTRAL</span>
-                        </div>
-                    </div>
-
-                    <span class="terminal-online">
-                        ● EN LÍNEA
-                    </span>
-
-                </div>
-
-
-                <div class="terminal-message">
-
-                    <p class="terminal-time">
-                        SISTEMA · MENSAJE AUTOMÁTICO
-                    </p>
-
-                    <p id="armyMessage">
-                        Hola. Veo que estás intentando acceder
-                        a una instalación restringida.
-
-                        Me temo que no puedo permitirte entrar.
-                        Son órdenes directas de Zairon.
-                    </p>
-
-                </div>
-
-
-                <div class="terminal-footer">
-
-                    <span>
-                        CONEXIÓN SEGURA
-                    </span>
-
-                    <span>
-                        PROTECCIÓN ACTIVA
-                    </span>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ADVERTENCIA FINAL -->
-
-        <section class="final-warning">
-
-            <p>
-                CUALQUIER INTENTO DE ACCESO NO AUTORIZADO
-                SERÁ REGISTRADO.
+            <p class="access-label">
+                SISTEMA DE SEGURIDAD · INSTALACIÓN CONFIDENCIAL
             </p>
 
-            <span>
-                EL IMPERIO · ARCHIVO CONFIDENCIAL
-            </span>
+            <h1>
+                ACCESO
+                <span>RESTRINGIDO</span>
+            </h1>
 
-        </section>
+            <div class="access-line"></div>
 
-    </main>
+            <p class="access-description">
+                Esta instalación es propiedad exclusiva de Zairon.
+                Ningún otro miembro del Imperio dispone de autorización
+                para entrar.
+            </p>
 
+            <div class="access-warning">
+                <strong>ADVERTENCIA</strong>
 
-    <footer class="footer">
+                <p>
+                    NO ENTRE SI NO ES ZAIRON.
+                </p>
 
-        <div class="footer-logo">
-            ✦ EL IMPERIO
+                <span>
+                    EL INCUMPLIMIENTO DE ESTA ORDEN PUEDE TENER
+                    CONSECUENCIAS GRAVES.
+                </span>
+            </div>
+
+            <div class="access-information">
+
+                <div>
+                    <span>INSTALACIÓN</span>
+                    <strong>SUBTERRÁNEO</strong>
+                </div>
+
+                <div>
+                    <span>AUTORIZACIÓN</span>
+                    <strong>EXCLUSIVA ZAIRON</strong>
+                </div>
+
+                <div>
+                    <span>SEGURIDAD</span>
+                    <strong>TORRETAS LÁSER</strong>
+                </div>
+
+                <div>
+                    <span>SUPERVISIÓN EXTERIOR</span>
+                    <strong>A.R.M.Y</strong>
+                </div>
+
+            </div>
+
+            <button id="startAccessButton" class="authorization-button">
+                INICIAR VERIFICACIÓN
+            </button>
+
+            <a href="index.html" class="exit-button">
+                REGRESAR AL ARCHIVO CENTRAL
+            </a>
+
         </div>
 
-        <p>La información restringida permanece protegida.</p>
+    </section>
 
-        <span>PROTOCOLO DE SEGURIDAD · A.R.M.Y</span>
 
-    </footer>
+    <!-- =================================
+         VERIFICACIONES DE IDENTIDAD
+    ================================== -->
+
+    <section class="verification-section" id="verificationSection" hidden>
+
+        <div class="verification-container">
+
+            <p class="access-label">
+                PROTOCOLO DE IDENTIFICACIÓN
+            </p>
+
+            <h2>VERIFICACIÓN DE ACCESO</h2>
+
+            <p class="verification-description">
+                Para continuar, deben superarse las tres verificaciones
+                de seguridad establecidas por el propietario.
+            </p>
+
+
+            <!-- VERIFICACIÓN 1 -->
+
+            <div class="verification-card" id="verificationOne">
+
+                <span class="verification-number">01</span>
+
+                <h3>IDENTIFICACIÓN NUMÉRICA</h3>
+
+                <p>
+                    Introduce el código numérico de cuatro dígitos.
+                </p>
+
+                <label for="numericCode">
+                    CÓDIGO DE ACCESO
+                </label>
+
+                <input
+                    type="password"
+                    id="numericCode"
+                    maxlength="4"
+                    inputmode="numeric"
+                    autocomplete="off"
+                    placeholder="••••"
+                >
+
+                <button class="verification-button" id="numericButton">
+                    VERIFICAR
+                </button>
+
+                <p class="verification-feedback" id="numericFeedback" aria-live="polite"></p>
+
+            </div>
+
+
+            <!-- VERIFICACIÓN 2 -->
+
+            <div class="verification-card locked" id="verificationTwo">
+
+                <span class="verification-number">02</span>
+
+                <h3>IDENTIFICACIÓN ALFANUMÉRICA</h3>
+
+                <p>
+                    Introduce la segunda clave de seguridad.
+                </p>
+
+                <label for="alphanumericCode">
+                    CLAVE DE SEGURIDAD
+                </label>
+
+                <input
+                    type="password"
+                    id="alphanumericCode"
+                    autocomplete="off"
+                    placeholder="•••••••"
+                    disabled
+                >
+
+                <button class="verification-button" id="alphanumericButton" disabled>
+                    VERIFICAR
+                </button>
+
+                <p class="verification-feedback" id="alphanumericFeedback" aria-live="polite"></p>
+
+            </div>
+
+
+            <!-- VERIFICACIÓN 3 -->
+
+            <div class="verification-card locked" id="verificationThree">
+
+                <span class="verification-number">03</span>
+
+                <h3>IDENTIFICACIÓN BIOLÓGICA</h3>
+
+                <p>
+                    Se requiere una coincidencia sanguínea con el
+                    propietario de la instalación.
+                </p>
+
+                <div class="blood-scanner" id="bloodScanner">
+
+                    <div class="scanner-circle">
+                        <span>✦</span>
+                    </div>
+
+                    <p id="scannerStatus">
+                        ESCÁNER BIOMÉTRICO INACTIVO
+                    </p>
+
+                </div>
+
+                <button class="verification-button" id="bloodButton" disabled>
+                    INICIAR ESCÁNER
+                </button>
+
+                <p class="verification-feedback" id="bloodFeedback" aria-live="polite"></p>
+
+            </div>
+
+
+            <div class="verification-progress">
+                <span id="verificationProgress">
+                    VERIFICACIONES COMPLETADAS: 0 / 3
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         ADVERTENCIA DEL INTERIOR
+    ================================== -->
+
+    <section class="unknown-warning" id="unknownWarning" hidden>
+
+        <div class="unknown-content">
+
+            <p class="access-label">
+                SISTEMA INTERNO · MENSAJE AUTOMÁTICO
+            </p>
+
+            <h2>ACCESO CONCEDIDO</h2>
+
+            <div class="access-line"></div>
+
+            <p class="unknown-message">
+                Entrando en zona restringida.
+
+                Las entidades que custodian esta zona son de clase:
+            </p>
+
+            <strong class="entity-class">$&#@</strong>
+
+            <p class="unknown-question">
+                ¿Vale la pena adentrarse en lo desconocido?
+            </p>
+
+            <button class="authorization-button" id="enterUndergroundButton">
+                CONTINUAR DESCENSO
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         EXPLORACIÓN DEL SUBTERRÁNEO
+    ================================== -->
+
+    <section class="exploration-section" id="explorationSection" hidden>
+
+        <div class="exploration-header">
+
+            <p class="access-label">
+                INSTALACIÓN SUBTERRÁNEA · EXPLORACIÓN
+            </p>
+
+            <h2 id="levelTitle">NIVEL 1</h2>
+
+            <div class="access-line"></div>
+
+            <p id="levelDescription">
+                Almacén.
+            </p>
+
+        </div>
+
+
+        <div class="level-container">
+
+            <div class="level-indicator">
+                <span>NIVEL ACTUAL</span>
+                <strong id="levelNumber">01 / 07</strong>
+            </div>
+
+            <div class="level-content">
+
+                <div class="level-symbol" id="levelSymbol">
+                    ◈
+                </div>
+
+                <h3 id="levelName">ALMACÉN</h3>
+
+                <p id="levelDetails">
+                    Primera planta de la instalación subterránea.
+                </p>
+
+                <div id="levelItems" class="level-items" hidden></div>
+
+                <!-- =================================
+     BÓVEDA DE DINERO · NIVEL 3
+================================== -->
+
+<div class="vault-access" id="vaultAccess" hidden>
+
+    <div class="vault-header">
+        <span>◈ SISTEMA FINANCIERO</span>
+        <span class="vault-security">ACCESO PROTEGIDO</span>
+    </div>
+
+    <h4>RECONOCIMIENTO OCULAR</h4>
+
+    <p>
+        Identificación reservada al propietario de la bóveda.
+    </p>
+
+    <div class="vault-scanner" id="vaultScanner">
+        <span class="vault-eye">◎</span>
+        <span id="vaultScanStatus">
+            ESCÁNER EN ESPERA
+        </span>
+    </div>
+
+    <button
+        class="verification-button"
+        id="vaultScanButton">
+        INICIAR RECONOCIMIENTO
+    </button>
+
+    <!-- RESULTADO DEL RECONOCIMIENTO -->
+
+    <div class="vault-balance" id="vaultBalance" hidden>
+
+        <div class="vault-balance-line"></div>
+
+        <span class="vault-balance-label">
+            SALDO PERSONAL DE ZAIRON
+        </span>
+
+        <strong>12.682.247 €</strong>
+
+        <div class="vault-army-message">
+
+            <span>A.R.M.Y · INFORME FINANCIERO</span>
+
+            <p>
+                Identidad confirmada, Zairon.
+                He comprobado el saldo de la bóveda.
+                Los fondos permanecen protegidos y bajo mi supervisión.
+
+                Y, por favor, intenta no gastarlo todo esta vez.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+            </div>
+
+            <div class="level-navigation">
+
+                <span id="transportDescription">
+                    SISTEMA DE TRANSPORTE DISPONIBLE:
+                    ASCENSOR Y ESCALERAS
+                </span>
+
+                <button id="nextLevelButton" class="authorization-button">
+                    DESCENDER AL SIGUIENTE NIVEL
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         TERMINAL DE A.R.M.Y
+    ================================== -->
+
+    <section class="army-terminal-section" id="armyTerminalSection">
+
+        <div class="army-terminal">
+
+            <div class="terminal-header">
+
+                <div class="terminal-title">
+
+                    <span class="terminal-icon">A</span>
+
+                    <div>
+                        <strong>A.R.M.Y</strong>
+                        <span>ASISTENTE CENTRAL</span>
+                    </div>
+
+                </div>
+
+                <span class="terminal-online">
+                    ● EN LÍNEA
+                </span>
+
+            </div>
+
+
+            <div class="terminal-message">
+
+                <p class="terminal-time">
+                    SISTEMA · MENSAJE AUTOMÁTICO
+                </p>
+
+                <p id="armyMessage">
+                    Hola. Veo que estás intentando acceder
+                    a una instalación restringida.
+
+                    Me temo que no puedo permitirte entrar.
+                    Son órdenes directas de Zairon.
+                </p>
+
+            </div>
+
+
+            <div class="terminal-footer">
+
+                <span>CONEXIÓN SEGURA</span>
+
+                <span>PROTECCIÓN ACTIVA</span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================
+         ADVERTENCIA FINAL
+    ================================== -->
+
+    <section class="final-warning">
+
+        <p>
+            CUALQUIER INTENTO DE ACCESO NO AUTORIZADO
+            SERÁ REGISTRADO.
+        </p>
+
+        <span>
+            EL IMPERIO · ARCHIVO CONFIDENCIAL
+        </span>
+
+    </section>
+
+</main>
+
+
+<footer class="footer">
+
+    <div class="footer-logo">
+        ✦ EL IMPERIO
+    </div>
+
+    <p>La información restringida permanece protegida.</p>
+
+    <span>PROTOCOLO DE SEGURIDAD · A.R.M.Y</span>
+
+</footer>
 
 </body>
 </html>
+

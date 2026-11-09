@@ -9,6 +9,97 @@
     <title>Edificio Principal | El Imperio</title>
 
     <link rel="stylesheet" href="style.css">
+
+<style>
+    .bathroom-section {
+        max-width: 1100px;
+        margin: 70px auto;
+        padding: 35px 25px;
+        scroll-margin-top: 100px;
+    }
+
+    .bathroom-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-top: 35px;
+    }
+
+    .bathroom-description,
+    .bathroom-warning {
+        padding: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.025);
+        border-radius: 8px;
+    }
+
+    .bathroom-description h3 {
+        color: #d8b46a;
+        margin-bottom: 18px;
+    }
+
+    .bathroom-description p,
+    .bathroom-description li {
+        color: #b9b9b9;
+        line-height: 1.8;
+    }
+
+    .bathroom-description ul {
+        padding-left: 20px;
+        margin: 20px 0;
+    }
+
+    .bathroom-warning {
+        border: 1px solid rgba(180, 55, 55, 0.5);
+        background: rgba(100, 20, 20, 0.12);
+        text-align: center;
+    }
+
+    .warning-icon {
+        font-size: 35px;
+        color: #d45b50;
+    }
+
+    .warning-label {
+        color: #d45b50;
+        font-size: 12px;
+        letter-spacing: 3px;
+        margin: 15px 0;
+    }
+
+    .bathroom-warning h3 {
+        color: #eee1d0;
+        font-size: 22px;
+        line-height: 1.5;
+        margin: 20px 0;
+    }
+
+    .warning-line {
+        width: 65px;
+        height: 2px;
+        background: #b9473e;
+        margin: 20px auto;
+    }
+
+    .bathroom-warning p {
+        color: #b9b9b9;
+        line-height: 1.7;
+    }
+
+    .warning-signature {
+        display: block;
+        color: #d8b46a;
+        margin-top: 25px;
+        font-size: 13px;
+    }
+
+    @media (max-width: 700px) {
+        .bathroom-content {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
 </head>
 
 <body class="building-page">
@@ -154,26 +245,31 @@
 
 
                 <!-- BAÑOS -->
-                <article class="building-card">
+<article class="building-card">
 
-                    <div class="building-card-top">
-                        <span class="building-icon">≈</span>
-                        <span class="zone-code">ZONA 03</span>
-                    </div>
+    <div class="building-card-top">
+        <span class="building-icon">≈</span>
+        <span class="zone-code">ZONA 03</span>
+    </div>
 
-                    <h3>BAÑOS</h3>
+    <h3>BAÑO PRINCIPAL</h3>
 
-                    <p>
-                        Instalaciones básicas destinadas
-                        a la higiene personal de los
-                        integrantes.
-                    </p>
+    <p>
+        Una instalación sencilla destinada a la
+        higiene personal. Su diseño es básico:
+        Zairon considera que lo importante es
+        que el baño siga en pie.
+    </p>
 
-                    <span class="zone-status">
-                        ● INSTALACIÓN OPERATIVA
-                    </span>
+    <span class="zone-status">
+        ● INSTALACIÓN OPERATIVA
+    </span>
 
-                </article>
+    <a href="#bano" class="underground-button">
+        CONSULTAR INSTALACIÓN →
+    </a>
+
+</article>
 
 
                 <!-- SUBTERRÁNEO -->
@@ -203,6 +299,76 @@
                 </article>
 
             </div>
+
+            <!-- INFORMACIÓN DEL BAÑO -->
+<section class="bathroom-section" id="bano">
+
+    <div class="section-heading">
+        <p class="eyebrow">ZONA 03 · INSTALACIONES SANITARIAS</p>
+        <h2>BAÑO PRINCIPAL</h2>
+        <div class="gold-line"></div>
+    </div>
+
+    <div class="bathroom-content">
+
+        <div class="bathroom-description">
+
+            <h3>UNA INSTALACIÓN SENCILLA</h3>
+
+            <p>
+                El baño principal dispone de las instalaciones
+                habituales para la higiene personal.
+            </p>
+
+            <p>
+                Zairon no consideró necesario complicar
+                demasiado su decoración. Su única exigencia
+                fue que la instalación perdurase.
+            </p>
+
+            <ul>
+                <li>Lavabo y espejo.</li>
+                <li>Inodoro.</li>
+                <li>Ducha.</li>
+                <li>Instalaciones de agua.</li>
+            </ul>
+
+            <span class="zone-status">
+                ● ESTADO: OPERATIVO
+            </span>
+
+        </div>
+
+        <div class="bathroom-warning">
+
+            <span class="warning-icon">⚠</span>
+
+            <p class="warning-label">
+                AVISO DE LA DIRECCIÓN
+            </p>
+
+            <h3>
+                POR FAVOR, NO HAGAN
+                EXPLOTAR EL BAÑO
+                DE NUEVO.
+            </h3>
+
+            <div class="warning-line"></div>
+
+            <p>
+                Se ruega a todos los integrantes que hagan
+                un uso responsable de las instalaciones.
+            </p>
+
+            <span class="warning-signature">
+                — A.R.M.Y
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
 
         </section>
 

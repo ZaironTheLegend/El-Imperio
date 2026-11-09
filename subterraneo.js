@@ -1,44 +1,690 @@
 
-// =====================================
-// A.R.M.Y
-// PROTOCOLO DE ACCESO RESTRINGIDO
-// =====================================
+// =============================================
+// EL IMPERIO
+// INSTALACIÓN SUBTERRÁNEA
+// SISTEMA DE ACCESO Y EXPLORACIÓN
+// =============================================
 
-const authorizationButton =
-    document.getElementById("authorizationButton");
 
-const armyMessage =
-    document.getElementById("armyMessage");
+// =============================================
+// ELEMENTOS HTML
+// =============================================
 
-const responses = [
+const startAccessButton = document.getElementById("startAccessButton");
 
-    "Solicitud recibida. Denegada. No tienes autorización.",
+const accessScreen = document.getElementById("accessScreen");
+const verificationSection = document.getElementById("verificationSection");
 
-    "Entiendo tu curiosidad, pero no puedo revelar información de esta instalación.",
+const unknownWarning = document.getElementById("unknownWarning");
+const enterUndergroundButton = document.getElementById("enterUndergroundButton");
 
-    "He comprobado tus permisos. El resultado sigue siendo el mismo: acceso denegado.",
+const explorationSection = document.getElementById("explorationSection");
 
-    "Por favor, no insistas. Son órdenes directas de Zairon.",
+const armyTerminalSection = document.getElementById("armyTerminalSection");
+const armyMessage = document.getElementById("armyMessage");
 
-    "¿De verdad pensabas que iba a dejarte entrar tan fácilmente?",
 
-    "No puedo enseñarte lo que hay ahí abajo. Espero que disfrutes del resto de la fortaleza."
+// =============================================
+// VERIFICACIÓN 1: CÓDIGO NUMÉRICO
+// =============================================
+
+const numericCode = document.getElementById("numericCode");
+const numericButton = document.getElementById("numericButton");
+const numericFeedback = document.getElementById("numericFeedback");
+
+const verificationOne = document.getElementById("verificationOne");
+
+
+// =============================================
+// VERIFICACIÓN 2: CÓDIGO ALFANUMÉRICO
+// =============================================
+
+const alphanumericCode = document.getElementById("alphanumericCode");
+const alphanumericButton = document.getElementById("alphanumericButton");
+const alphanumericFeedback = document.getElementById("alphanumericFeedback");
+
+const verificationTwo = document.getElementById("verificationTwo");
+
+
+// =============================================
+// VERIFICACIÓN 3: ESCÁNER SANGUÍNEO
+// =============================================
+
+const bloodButton = document.getElementById("bloodButton");
+const bloodFeedback = document.getElementById("bloodFeedback");
+
+const bloodScanner = document.getElementById("bloodScanner");
+const scannerStatus = document.getElementById("scannerStatus");
+
+const verificationThree = document.getElementById("verificationThree");
+
+
+// =============================================
+// PROGRESO DE VERIFICACIONES
+// =============================================
+
+const verificationProgress = document.getElementById("verificationProgress");
+
+let completedVerifications = 0;
+
+
+// =============================================
+// CÓDIGOS DE ACCESO
+// =============================================
+
+// Simulación narrativa.
+// Estos códigos no constituyen seguridad real.
+
+const NUMERIC_PASSWORD = "2427";
+const ALPHANUMERIC_PASSWORD = "#99FF90";
+
+
+// =============================================
+// INICIAR PROTOCOLO
+// =============================================
+
+startAccessButton.addEventListener("click", () => {
+
+    accessScreen.hidden = true;
+    verificationSection.hidden = false;
+
+    armyMessage.textContent =
+        "El sistema de seguridad está preparado para comprobar tu autorización. Recuerda que esta instalación es de acceso exclusivo para Zairon.";
+
+    verificationSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+});
+
+
+// =============================================
+// ACTUALIZAR PROGRESO
+// =============================================
+
+function updateProgress() {
+
+    verificationProgress.textContent =
+        `VERIFICACIONES COMPLETADAS: ${completedVerifications} / 3`;
+
+}
+
+
+// =============================================
+// VERIFICACIÓN 1
+// =============================================
+
+numericButton.addEventListener("click", () => {
+
+    const enteredCode = numericCode.value.trim();
+
+    if (enteredCode === NUMERIC_PASSWORD) {
+
+        numericFeedback.textContent =
+            "IDENTIFICACIÓN NUMÉRICA ACEPTADA.";
+
+        numericFeedback.className =
+            "verification-feedback success";
+
+        numericButton.textContent = "VERIFICACIÓN COMPLETADA";
+        numericButton.disabled = true;
+
+        numericCode.disabled = true;
+
+        verificationOne.classList.add("completed");
+
+        verificationTwo.classList.remove("locked");
+
+        alphanumericCode.disabled = false;
+        alphanumericButton.disabled = false;
+
+        completedVerifications++;
+
+        updateProgress();
+
+    } else {
+
+        numericFeedback.textContent =
+            "CÓDIGO INCORRECTO. ACCESO NO VALIDADO.";
+
+        numericFeedback.className =
+            "verification-feedback error";
+
+        numericCode.value = "";
+        numericCode.focus();
+
+    }
+
+});
+
+
+// =============================================
+// VERIFICACIÓN 2
+// =============================================
+
+alphanumericButton.addEventListener("click", () => {
+
+    const enteredCode = alphanumericCode.value.trim();
+
+    if (enteredCode === ALPHANUMERIC_PASSWORD) {
+
+        alphanumericFeedback.textContent =
+            "CLAVE ALFANUMÉRICA ACEPTADA.";
+
+        alphanumericFeedback.className =
+            "verification-feedback success";
+
+        alphanumericButton.textContent =
+            "VERIFICACIÓN COMPLETADA";
+
+        alphanumericButton.disabled = true;
+        alphanumericCode.disabled = true;
+
+        verificationTwo.classList.add("completed");
+
+        verificationThree.classList.remove("locked");
+
+        bloodButton.disabled = false;
+
+        completedVerifications++;
+
+        updateProgress();
+
+    } else {
+
+        alphanumericFeedback.textContent =
+            "CLAVE INCORRECTA. IDENTIFICACIÓN RECHAZADA.";
+
+        alphanumericFeedback.className =
+            "verification-feedback error";
+
+        alphanumericCode.value = "";
+        alphanumericCode.focus();
+
+    }
+
+});
+
+
+// =============================================
+// VERIFICACIÓN 3
+// ESCÁNER SANGUÍNEO SIMULADO
+// =============================================
+
+bloodButton.addEventListener("click", () => {
+
+    bloodButton.disabled = true;
+
+    bloodScanner.classList.add("scanning");
+
+    scannerStatus.textContent =
+        "ANALIZANDO MUESTRA...";
+
+    bloodFeedback.textContent = "";
+
+    bloodFeedback.className =
+        "verification-feedback";
+
+    // Simulación visual: no se recoge ni almacena
+    // sangre ni información biométrica real.
+
+    setTimeout(() => {
+
+        bloodScanner.classList.remove("scanning");
+
+        scannerStatus.textContent =
+            "COINCIDENCIA IDENTIFICADA";
+
+        bloodFeedback.textContent =
+            "IDENTIDAD DE ZAIRON CONFIRMADA.";
+
+        bloodFeedback.className =
+            "verification-feedback success";
+
+        bloodButton.textContent =
+            "VERIFICACIÓN COMPLETADA";
+
+        verificationThree.classList.add("completed");
+
+        completedVerifications++;
+
+        updateProgress();
+
+        setTimeout(() => {
+
+            verificationSection.hidden = true;
+
+            unknownWarning.hidden = false;
+
+            // A.R.M.Y deja de aparecer en la instalación.
+            // No conoce lo que existe en su interior.
+
+            armyTerminalSection.hidden = true;
+
+            unknownWarning.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }, 1200);
+
+    }, 2500);
+
+});
+
+
+// =============================================
+// ENTRAR EN EL SUBTERRÁNEO
+// =============================================
+
+enterUndergroundButton.addEventListener("click", () => {
+
+    unknownWarning.hidden = true;
+
+    explorationSection.hidden = false;
+
+    currentLevel = 0;
+
+    showLevel();
+
+    explorationSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+});
+
+
+// =============================================
+// LOS SIETE NIVELES
+// =============================================
+
+const undergroundLevels = [
+
+            {
+        number: "01 / 07",
+        title: "NIVEL 1",
+        name: "ALMACÉN DE REPUESTOS",
+        symbol: "◈",
+
+        description:
+            "Primera planta de la instalación subterránea.",
+
+        details:
+            "Este almacén contiene centenares de cuerpos de repuesto destinados a Safira y A.R.M.Y. Todos son réplicas exactas de sus respectivos cuerpos actuales. Permanecen almacenados y sin activar, preparados para sustituir a los originales en caso de que sufran daños irreparables. Zairon es el responsable de conservarlos.",
+
+        transport:
+            "ASCENSOR Y ESCALERAS DE PARED DISPONIBLES."
+    },
+
+        {
+    number: "02 / 07",
+    title: "NIVEL 2",
+    name: "ARMAMENTO Y OBJETOS OLVIDADOS",
+    symbol: "⚔",
+
+    description:
+        "Segunda planta de la instalación subterránea. Un almacén donde descansan armas, herramientas y objetos especiales que, por diferentes motivos, terminaron abandonados o guardados.",
+
+    details:
+        "El inventario de esta planta contiene equipamiento diseñado, modificado o recuperado por distintos miembros del Imperio. Algunos objetos fueron creados para mejorar las capacidades de combate de sus propietarios. Otros... quizá deberían haber permanecido olvidados.",
+
+    items: [
+
+        {
+            name: "GUANTES DE AMBIA",
+            category: "EQUIPAMIENTO DE COMBATE",
+            symbol: "✦",
+
+            description:
+                "Diseñados personalmente por Zairon para Ambia. Estos guantes están pensados para ofrecer un estilo de combate mucho más contundente y afilado, permitiendo ejecutar golpes capaces de combinar fuerza e impacto cortante. Incorporan además un sistema de paracaídas integrado."
+        },
+
+        {
+            name: "GUANTES DE RUBÉN",
+            category: "EQUIPAMIENTO MODIFICADO",
+            symbol: "❄",
+
+            description:
+                "Originalmente pertenecieron a Caos, la todopoderosa. Fueron creados para potenciar sus poderes, pero tenían un problema: no eran de su medida y tampoco ofrecían la durabilidad necesaria. Tras ser desechados, Rubén los recogió y se los entregó a Zairon, quien los modificó para sustituir su afinidad con el fuego por una capacidad de potenciar el hielo."
+        },
+
+        {
+            name: "CUBO ESQUIZOFRÉNICO",
+            category: "DISPOSITIVO DE ATURDIMIENTO",
+            symbol: "▣",
+
+            description:
+                "Una creación de Safira cuyo funcionamiento resulta difícil de justificar desde cualquier perspectiva tecnológica convencional. El cubo libera una descarga de basura de internet capaz de aturdir a cualquiera que se encuentre en un radio de cinco metros. Tocar directamente el cubo también provoca el efecto. Se recomienda no acercarse demasiado."
+        },
+
+        {
+            name: "CRUCES DEL SANTO",
+            category: "ARMAMENTO ESPECIAL",
+            symbol: "✝",
+
+            description:
+                "Cruces cristianas diseñadas por Zairon para Bryan. Están preparadas para ser lanzadas contra los enemigos y detonar al impactar. Su efecto puede purificar al objetivo o causarle daño, convirtiéndolas en un arma especialmente particular dentro del arsenal del Imperio."
+        },
+
+        {
+            name: "GUANTES DE NEXTOR",
+            category: "EQUIPAMIENTO DE REPUESTO",
+            symbol: "♜",
+
+            description:
+                "Un juego de guantes de repuesto preparado para Nextor. Incorporan un sistema de drenaje diseñado para transportar su sangre venenosa hasta las garras, permitiendo imbuirlas con sus propiedades tóxicas. De esta manera, Nextor dispone de otro conjunto de equipamiento compatible con su estilo de combate."
+        },
+
+        {
+            name: "GORRO DE CUMPLEAÑOS BLANCO Y NEGRO",
+            category: "OBJETO NO IDENTIFICADO",
+            symbol: "⚠",
+
+            warning: true,
+
+            description:
+                "Un objeto aparentemente inofensivo que permanece almacenado en esta planta. No existe autorización para manipularlo. Su presencia viene acompañada de una advertencia explícita: NO TOCAR BAJO NINGUNA CIRCUNSTANCIA."
+        }
+
+    ],
+
+    transport:
+        "ASCENSOR Y ESCALERAS DE PARED DISPONIBLES."
+},
+
+    {
+        number: "03 / 07",
+        title: "NIVEL 3",
+        name: "BÓVEDA DE DINERO",
+        symbol: "€",
+
+        description:
+            "Tercera planta de la instalación subterránea. Cámara acorazada donde Zairon almacena su fortuna personal.",
+
+        details:
+            "Esta bóveda contiene los fondos de Zairon. A.R.M.Y administra y supervisa el dinero para evitar gastos excesivos. El saldo está protegido mediante un sistema de reconocimiento ocular simulado.",
+
+        transport:
+            "ASCENSOR Y ESCALERAS DE PARED DISPONIBLES."
+    },
+
+    {
+        number: "04 / 07",
+        title: "NIVEL 4",
+        name: "PROTOTIPOS DE ARMAS",
+        symbol: "⌬",
+
+        description:
+            "Cuarta planta de la instalación subterránea.",
+
+        details:
+            "Área dedicada al desarrollo y almacenamiento de prototipos de armas.",
+
+        transport:
+            "ASCENSOR Y ESCALERAS DE PARED DISPONIBLES."
+    },
+
+    {
+        number: "05 / 07",
+        title: "NIVEL 5",
+        name: "ENTIDADES GUARDIANAS",
+        symbol: "☠",
+
+        description:
+            "Quinta planta. Zona de entidades de clase $&#@.",
+
+        details:
+            "En este nivel se encuentran las máquinas de combate creadas por Zairon. Son prototipos que carecen de una programación adecuada y presentan un comportamiento extremadamente agresivo.",
+
+        transport:
+            "PRECAUCIÓN: ENTIDADES GUARDIANAS EN ESTE NIVEL."
+    },
+
+    {
+        number: "06 / 07",
+        title: "NIVEL 6",
+        name: "NOSTALGIA",
+        symbol: "✧",
+
+        description:
+            "Sexta planta. Recuerdos de las aventuras.",
+
+        details:
+            "Un espacio dedicado a conservar los recuerdos de las aventuras vividas por Zairon.",
+
+        transport:
+            "ASCENSOR Y ESCALERAS DE PARED DISPONIBLES."
+    },
+
+    {
+        number: "07 / 07",
+        title: "NIVEL 7",
+        name: "CORAZÓN DE A.R.M.Y",
+        symbol: "♥",
+
+        description:
+            "Última planta. El núcleo de A.R.M.Y.",
+
+        details:
+            "Zairon creó a A.R.M.Y en el Nivel 1. Con el paso del tiempo trasladó su núcleo a niveles cada vez más profundos para protegerla. Diseñó personalmente esta sala, instaló medidas de seguridad y creó copias de respaldo. A.R.M.Y desconoce que su núcleo y sus copias se encuentran aquí. Zairon baja personalmente al final de cada día para crear una nueva copia de respaldo. No quiere perderla.",
+
+        transport:
+            "DESTINO FINAL DEL RECORRIDO."
+    }
 
 ];
 
-authorizationButton.addEventListener("click", () => {
 
-    const randomIndex = Math.floor(
-        Math.random() * responses.length
-    );
+// =============================================
+// CONTROL DE EXPLORACIÓN
+// =============================================
 
-    armyMessage.textContent = responses[randomIndex];
+let currentLevel = 0;
 
-    authorizationButton.textContent =
-        "SOLICITUD PROCESADA";
+const levelTitle = document.getElementById("levelTitle");
+const levelNumber = document.getElementById("levelNumber");
 
-    authorizationButton.disabled = true;
+const levelName = document.getElementById("levelName");
+const levelSymbol = document.getElementById("levelSymbol");
 
-    authorizationButton.style.opacity = "0.6";
+const levelDescription = document.getElementById("levelDescription");
+const levelDetails = document.getElementById("levelDetails");
+
+const levelItems = document.getElementById("levelItems");
+
+const transportDescription = document.getElementById("transportDescription");
+
+const nextLevelButton = document.getElementById("nextLevelButton");
+
+// =============================================
+// BÓVEDA DE DINERO · RECONOCIMIENTO OCULAR
+// =============================================
+
+const vaultAccess = document.getElementById("vaultAccess");
+
+const vaultScanner = document.getElementById("vaultScanner");
+
+const vaultScanButton = document.getElementById("vaultScanButton");
+
+const vaultScanStatus = document.getElementById("vaultScanStatus");
+
+const vaultBalance = document.getElementById("vaultBalance");
+
+// =============================================
+// ESCÁNER OCULAR SIMULADO
+// =============================================
+
+vaultScanButton.addEventListener("click", () => {
+
+    vaultScanButton.disabled = true;
+
+    vaultScanner.classList.add("scanning");
+
+    vaultScanStatus.textContent =
+        "ANALIZANDO IDENTIDAD...";
+
+    vaultBalance.hidden = true;
+
+    setTimeout(() => {
+
+        vaultScanner.classList.remove("scanning");
+
+        vaultScanner.classList.add("verified");
+
+        vaultScanStatus.textContent =
+            "IDENTIDAD CONFIRMADA · ZAIRON";
+
+        vaultScanButton.textContent =
+            "IDENTIDAD VERIFICADA";
+
+        vaultBalance.hidden = false;
+
+    }, 2500);
+
+});
+
+
+// =============================================
+// MOSTRAR NIVEL ACTUAL
+// =============================================
+
+function showLevel() {
+
+    const level = undergroundLevels[currentLevel];
+
+    levelTitle.textContent = level.title;
+    levelNumber.textContent = level.number;
+
+    levelName.textContent = level.name;
+    levelSymbol.textContent = level.symbol;
+
+    levelDescription.textContent = level.description;
+
+levelDetails.textContent = level.details;
+
+// Mostrar inventario especial si el nivel lo contiene
+
+if (level.items) {
+
+    levelDetails.hidden = false;
+    levelItems.hidden = false;
+
+    levelItems.innerHTML = level.items.map(item => {
+
+        const cardContent = `
+            <div class="item-card-header">
+                <span class="item-symbol">${item.symbol}</span>
+                <span class="item-category">${item.category}</span>
+            </div>
+
+            <h4>${item.name}</h4>
+
+            <p>${item.description}</p>
+
+            ${item.warning ? `
+                <span class="item-warning">
+                    ⚠ PROHIBIDO TOCAR
+                </span>
+            ` : ""}
+        `;
+
+        if (item.warning) {
+            return `
+                <a href="arkania.html" class="item-card item-danger">
+                    ${cardContent}
+                    <span class="item-open">
+                        INTERACCIÓN NO AUTORIZADA →
+                    </span>
+                </a>
+            `;
+        }
+
+        return `
+            <article class="item-card">
+                ${cardContent}
+            </article>
+        `;
+
+    }).join("");
+
+} else {
+
+    levelItems.hidden = true;
+    levelItems.innerHTML = "";
+
+    levelDetails.hidden = false;
+
+}
+
+    transportDescription.textContent = level.transport;
+
+    // Mostrar el sistema financiero únicamente en el Nivel 3
+
+vaultAccess.hidden = currentLevel !== 2;
+
+if (currentLevel === 2) {
+
+    vaultScanButton.disabled = false;
+
+    vaultScanButton.textContent =
+        "INICIAR RECONOCIMIENTO";
+
+    vaultScanStatus.textContent =
+        "ESCÁNER EN ESPERA";
+
+    vaultScanner.classList.remove("scanning", "verified");
+
+    vaultBalance.hidden = true;
+
+}
+
+    if (currentLevel === undergroundLevels.length - 1) {
+
+        nextLevelButton.textContent =
+            "FINALIZAR EXPLORACIÓN";
+
+    } else {
+
+        nextLevelButton.textContent =
+            "DESCENDER AL SIGUIENTE NIVEL";
+
+    }
+
+}
+
+
+// =============================================
+// DESCENDER AL SIGUIENTE NIVEL
+// =============================================
+
+nextLevelButton.addEventListener("click", () => {
+
+    if (currentLevel < undergroundLevels.length - 1) {
+
+        currentLevel++;
+
+        showLevel();
+
+        explorationSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    } else {
+
+        nextLevelButton.textContent =
+            "RECORRIDO COMPLETADO";
+
+        nextLevelButton.disabled = true;
+
+        transportDescription.textContent =
+            "HAS ALCANZADO EL NIVEL MÁS PROFUNDO DE LA INSTALACIÓN.";
+
+        levelDetails.textContent =
+            "Has llegado al corazón de A.R.M.Y. Esta sala contiene el núcleo y las copias de respaldo que Zairon protege personalmente.";
+
+    }
 
 });

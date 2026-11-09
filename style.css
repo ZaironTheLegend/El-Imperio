@@ -999,3 +999,111 @@ a {
     }
 
 }
+
+/* =====================================
+   INVENTARIO DEL NIVEL 2
+===================================== */
+
+.level-items {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+    text-align: left;
+}
+
+.level-items[hidden] {
+    display: none !important;
+}
+
+.item-card {
+    display: block;
+    padding: 22px;
+    background: #171414;
+    border: 1px solid #51443a;
+    border-radius: 7px;
+    color: #ded5c9;
+    text-decoration: none;
+    transition: border-color 0.25s, background 0.25s;
+}
+
+.item-card:hover {
+    border-color: #a78a58;
+    background: #201b18;
+}
+
+.item-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 18px;
+}
+
+.item-symbol {
+    font-size: 1.8rem;
+    color: #c5a66c;
+}
+
+.item-category {
+    color: #aa9676;
+    font-size: 0.68rem;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+.item-card h4 {
+    margin: 0 0 12px;
+    color: #e0c99b;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.item-card p {
+    margin: 0;
+    color: #b9b0a7;
+    font-size: 0.88rem;
+    line-height: 1.7;
+}
+
+.item-danger {
+    border-color: #873e3e;
+    background: #201313;
+    cursor: pointer;
+}
+
+.item-danger:hover {
+    border-color: #d05c5c;
+    background: #291616;
+}
+
+.item-danger .item-symbol,
+.item-danger h4 {
+    color: #d17b75;
+}
+
+.item-warning {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 7px 10px;
+    border: 1px solid #a83d42;
+    color: #e27676;
+    font-size: 0.72rem;
+    letter-spacing: 1px;
+}
+
+.item-open {
+    display: block;
+    margin-top: 18px;
+    color: #e27676;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 700px) {
+
+    .level-items {
+        grid-template-columns: 1fr;
+    }
+
+}
