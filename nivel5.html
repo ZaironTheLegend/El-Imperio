@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel 5 | Instalación subterránea</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nivel5.css">
+
+    <script src="nivel5.js" defer></script>
+</head>
+
+<body class="level5-page">
+
+    <main class="level5-container">
+
+        <header class="level5-header">
+            <p class="facility-label">INSTALACIÓN SUBTERRÁNEA</p>
+            <h1>NIVEL 5</h1>
+            <p class="level5-subtitle">ENTIDADES GUARDIANAS</p>
+        </header>
+
+        <section id="route-selection" class="level5-screen">
+
+            <h2>SELECCIÓN DE RUTA</h2>
+
+            <p>
+                Hay dos rutas disponibles para continuar.
+                Seleccione una de ellas para descender.
+            </p>
+
+            <div class="route-options">
+
+                <button id="elevator-route" class="route-button">
+                    <span class="route-symbol">▣</span>
+                    <span class="route-name">PASILLO DEL ASCENSOR</span>
+                    <span class="route-description">
+                        Acceso mediante los ascensores.
+                    </span>
+                </button>
+
+                <button id="stairs-route" class="route-button">
+                    <span class="route-symbol">▤</span>
+                    <span class="route-name">PASILLO DE LAS ESCALERAS</span>
+                    <span class="route-description">
+                        Acceso mediante las escaleras.
+                    </span>
+                </button>
+
+            </div>
+
+        </section>
+
+        <section id="challenge-screen" class="level5-screen" hidden>
+            <!-- Aquí aparecerá el desafío seleccionado -->
+        </section>
+
+        <section id="terminal-screen" class="level5-screen" hidden>
+            <!-- Aquí aparecerá la terminal de información -->
+        </section>
+
+    </main>
+
+</body>
+</html>

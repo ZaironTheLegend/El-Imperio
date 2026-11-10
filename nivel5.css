@@ -1,0 +1,165 @@
+
+/* =====================================
+   NIVEL 5 - ENTIDADES GUARDIANAS
+===================================== */
+
+.level5-page {
+    background: #100d0e;
+    color: #e8dddd;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.level5-container {
+    width: min(1000px, 90%);
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+/* CABECERA */
+
+.level5-header {
+    text-align: center;
+    border-bottom: 1px solid #693033;
+    padding-bottom: 25px;
+    margin-bottom: 45px;
+}
+
+.facility-label {
+    color: #a83d42;
+    letter-spacing: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.level5-header h1 {
+    color: #e27676;
+    font-size: 48px;
+    margin: 15px 0 5px;
+}
+
+.level5-subtitle {
+    color: #a9a0a0;
+    letter-spacing: 3px;
+    font-size: 14px;
+}
+
+/* PANTALLAS */
+
+.level5-screen {
+    background: #191415;
+    border: 1px solid #51282b;
+    padding: 35px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.level5-screen h2 {
+    color: #e27676;
+    letter-spacing: 2px;
+    margin-top: 0;
+}
+
+.level5-screen p {
+    color: #b9aeae;
+    line-height: 1.7;
+}
+
+/* OPCIONES DE RUTA */
+
+.route-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 35px;
+}
+
+.route-button {
+    background: #211819;
+    border: 1px solid #693033;
+    color: #e8dddd;
+    padding: 30px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.25s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.route-button:hover {
+    background: #321719;
+    border-color: #e27676;
+    transform: translateY(-3px);
+}
+
+.route-symbol {
+    font-size: 38px;
+    color: #e27676;
+}
+
+.route-name {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.route-description {
+    color: #a99b9b;
+    font-size: 13px;
+}
+
+/* ELEMENTOS DEL DESAFÍO */
+
+.challenge-options {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.challenge-button {
+    background: #321719;
+    color: #f0dddd;
+    border: 1px solid #a83d42;
+    padding: 13px 22px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.challenge-button:hover {
+    background: #a83d42;
+}
+
+.terminal-message {
+    background: #0d1110;
+    border: 1px solid #52705b;
+    color: #a5d5ad;
+    padding: 25px;
+    text-align: left;
+    line-height: 1.8;
+    margin-top: 25px;
+    border-radius: 5px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* MÓVILES */
+
+@media (max-width: 650px) {
+    .route-options {
+        grid-template-columns: 1fr;
+    }
+
+    .level5-header h1 {
+        font-size: 36px;
+    }
+
+    .level5-screen {
+        padding: 22px;
+    }
+}

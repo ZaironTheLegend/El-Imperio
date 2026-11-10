@@ -280,6 +280,8 @@ bloodButton.addEventListener("click", () => {
 
 enterUndergroundButton.addEventListener("click", () => {
 
+    sessionStorage.setItem("accesoSubterraneo", "true");
+
     unknownWarning.hidden = true;
 
     explorationSection.hidden = false;
@@ -410,21 +412,55 @@ const undergroundLevels = [
             "ASCENSOR Y ESCALERAS DE PARED DISPONIBLES."
     },
 
-    {
-        number: "04 / 07",
-        title: "NIVEL 4",
-        name: "PROTOTIPOS DE ARMAS",
-        symbol: "⌬",
+    
+{
+    number: "04 / 07",
+    title: "NIVEL 4",
+    name: "PROTOTIPOS DE ARMAS",
+    symbol: "⚙",
+    description: "Cuarta planta de la instalación subterránea. Un espacio dedicado al almacenamiento de prototipos, experimentos y proyectos armamentísticos desarrollados por Zairon.",
+    details: "Todos los dispositivos almacenados en esta planta fueron diseñados por Zairon. Algunos llegaron a funcionar, otros presentaron problemas durante sus pruebas y unos cuantos demostraron que una buena idea no siempre termina convirtiéndose en un buen invento. Ninguno debe considerarse equipamiento operativo.",
+    items: [
+        {
+            name: "ESCUDO PIZZA",
+            category: "PROTOTIPO DEFENSIVO · VERSIÓN 1.0",
+            symbol: "◉",
+            description: "Escudo experimental diseñado para absorber un impacto y detonar cinco segundos después. Su funcionamiento exige lanzarlo antes de la explosión, convirtiéndolo en un arma defensiva bastante peculiar. Su escasa practicidad provocó que fuera sustituido por una versión mejorada: Escudo Pizza 2.0."
+        },
+        {
+            name: "MECHA",
+            category: "PROYECTO MECÁNICO INCOMPLETO",
+            symbol: "▣",
+            description: "Unidad mecánica de grandes dimensiones concebida para ser pilotada por varios miembros simultáneamente. Cada ocupante tendría el control de una parte diferente del Mecha. Aunque la idea prometía una máquina de combate coordinada, la complejidad de su funcionamiento y organización terminó convirtiéndolo en un proyecto poco viable. Su construcción nunca llegó a completarse."
+        },
+        {
+            name: "EL GUANTE DEL IMPERIO",
+            category: "PROTOTIPO DE EQUIPAMIENTO",
+            symbol: "✥",
+            description: "Una serie de guantes experimentales creados para reproducir el funcionamiento del Guante de la Isla. Sin embargo, las pruebas revelaron un defecto grave: su armadura desplegable provocaba daños internos en quienes la utilizaban. A pesar de los intentos de Zairon por perfeccionarlos, los prototipos no alcanzaron un funcionamiento seguro."
+        },
+        {
+            name: "GUADAÑA DE ZAIRON",
+            category: "PROTOTIPO DE ARMA PRINCIPAL",
+            symbol: "⚔",
+            description: "Una de las primeras versiones de la guadaña de Zairon. Todavía carece de varias de las funciones presentes en su versión moderna y presenta importantes defectos en su sistema de conductividad eléctrica. Se conserva como muestra de una etapa anterior de su desarrollo."
+        },
+        {
+            name: "GUANTES DE ZAIRON",
+            category: "PROTOTIPO DE CANALIZACIÓN MÁGICA",
+            symbol: "✦",
+            description: "Diseñados para facilitar y mejorar el flujo de magia de Zairon a través de sus manos. Sin embargo, el sistema de canalización nunca llegó a funcionar correctamente, impidiendo que los guantes cumplieran su propósito. El proyecto quedó descartado."
+        },
+        {
+            name: "ARMADURA DE NEXTOR",
+            category: "PROYECTO CANCELADO",
+            symbol: "♜",
+            description: "Un intento de desarrollar una armadura protectora para Nextor. El proyecto fue abandonado antes de completarse al considerar que equipar con una armadura convencional a alguien con una tendencia tan explosiva no era precisamente una solución práctica. La viabilidad del diseño quedó seriamente cuestionada."
+        }
+    ],
+    transport: "ASCENSOR Y ESCALERAS DE PARED DISPONIBLES."
+},
 
-        description:
-            "Cuarta planta de la instalación subterránea.",
-
-        details:
-            "Área dedicada al desarrollo y almacenamiento de prototipos de armas.",
-
-        transport:
-            "ASCENSOR Y ESCALERAS DE PARED DISPONIBLES."
-    },
 
     {
         number: "05 / 07",
@@ -554,6 +590,11 @@ function showLevel() {
 
     const level = undergroundLevels[currentLevel];
 
+        const returningOnFoot =
+        sessionStorage.getItem("regresoNivel5") === "true";
+
+    nextLevelButton.disabled = false;
+
     levelTitle.textContent = level.title;
     levelNumber.textContent = level.number;
 
@@ -618,7 +659,12 @@ if (level.items) {
 
 }
 
+if (returningOnFoot) {
+    transportDescription.textContent =
+        "EL ASCENSOR HA REGRESADO SOLO AL NIVEL 5. PARA VOLVER, DEBES CONTINUAR A PIE POR LAS ESCALERAS.";
+} else {
     transportDescription.textContent = level.transport;
+}
 
     // Mostrar el sistema financiero únicamente en el Nivel 3
 
@@ -640,27 +686,56 @@ if (currentLevel === 2) {
 
 }
 
-    if (currentLevel === undergroundLevels.length - 1) {
+if (currentLevel === 5) {
 
-        nextLevelButton.textContent =
-            "FINALIZAR EXPLORACIÓN";
+    nextLevelButton.textContent = "ACCESO AL NIVEL 7 RESTRINGIDO";
+    nextLevelButton.disabled = true;
 
-    } else {
+} else if (returningOnFoot && currentLevel === 3) {
 
-        nextLevelButton.textContent =
-            "DESCENDER AL SIGUIENTE NIVEL";
+    nextLevelButton.textContent = "REGRESAR AL NIVEL 5 A PIE";
 
-    }
+} else if (returningOnFoot) {
+
+    nextLevelButton.textContent = "CONTINUAR A PIE";
+
+} else if (currentLevel === 3) {
+
+    nextLevelButton.textContent = "ACCEDER AL NIVEL 5";
+
+} else {
+
+    nextLevelButton.textContent = "DESCENDER AL SIGUIENTE NIVEL";
 
 }
+
+} // FIN DE LA FUNCIÓN showLevel()
 
 
 // =============================================
 // DESCENDER AL SIGUIENTE NIVEL
 // =============================================
 
+
+
 nextLevelButton.addEventListener("click", () => {
 
+    // Desde el Nivel 4 se vuelve al desafío del Nivel 5.
+    if (currentLevel === 3) {
+
+        sessionStorage.removeItem("nivelVisita");
+        sessionStorage.removeItem("regresoNivel5");
+
+        window.location.href = "nivel5.html";
+        return;
+    }
+
+    // El visitante no puede continuar hacia el Nivel 7.
+    if (currentLevel >= 5) {
+        return;
+    }
+
+    // Avanzar al siguiente nivel.
     if (currentLevel < undergroundLevels.length - 1) {
 
         currentLevel++;
@@ -672,19 +747,81 @@ nextLevelButton.addEventListener("click", () => {
             block: "start"
         });
 
-    } else {
-
-        nextLevelButton.textContent =
-            "RECORRIDO COMPLETADO";
-
-        nextLevelButton.disabled = true;
-
-        transportDescription.textContent =
-            "HAS ALCANZADO EL NIVEL MÁS PROFUNDO DE LA INSTALACIÓN.";
-
-        levelDetails.textContent =
-            "Has llegado al corazón de A.R.M.Y. Esta sala contiene el núcleo y las copias de respaldo que Zairon protege personalmente.";
-
     }
 
 });
+
+
+
+
+/* =============================================
+   ACCESO A NIVELES DESDE EL NIVEL 5
+============================================= */
+
+const undergroundParams = new URLSearchParams(window.location.search);
+
+const requestedVisit = Number(undergroundParams.get("visita"));
+const requestedContinuation = undergroundParams.get("continuar");
+
+const hasUndergroundAccess =
+    sessionStorage.getItem("accesoSubterraneo") === "true";
+
+
+if (hasUndergroundAccess) {
+
+    // =========================================
+    // VISITAR LOS NIVELES 1, 2, 3 O 4
+    // DESDE EL ASCENSOR B
+    // =========================================
+
+    if (
+        requestedVisit >= 1 &&
+        requestedVisit <= 4 &&
+        sessionStorage.getItem("regresoNivel5") === "true"
+    ) {
+
+        accessScreen.hidden = true;
+        verificationSection.hidden = true;
+        unknownWarning.hidden = true;
+        armyTerminalSection.hidden = true;
+
+        explorationSection.hidden = false;
+
+        currentLevel = requestedVisit - 1;
+
+        showLevel();
+    }
+
+
+    // =========================================
+    // ACCESO AL NIVEL 6
+    // DESDE LA TERMINAL DE SEGURIDAD
+    // =========================================
+
+    if (requestedContinuation === "6") {
+
+        // Comprobar que el visitante ha leído
+        // la terminal y ha pulsado el botón.
+        if (
+            sessionStorage.getItem("nivel5Completado") !== "true"
+        ) {
+
+            window.location.href = "nivel5.html?terminal=1";
+
+        } else {
+
+            accessScreen.hidden = true;
+            verificationSection.hidden = true;
+            unknownWarning.hidden = true;
+            armyTerminalSection.hidden = true;
+
+            explorationSection.hidden = false;
+
+            currentLevel = 5;
+
+            showLevel();
+
+        }
+    }
+
+}
