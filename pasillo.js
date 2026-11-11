@@ -1,3 +1,4 @@
+
 // ==================================
 // PASILLO - SISTEMA DE PUERTAS
 // ==================================
@@ -29,8 +30,98 @@ const doorMessages = {
     }
 };
 
+
 // ==================================
-// SISTEMA DE SONIDO
+// SISTEMA DE AUDIO
+// ==================================
+
+const backgroundMusic = document.getElementById("audio-imperio");
+
+const roomAudioNames = [
+    "ambia",
+    "ruben",
+    "bryan",
+    "fran",
+    "nextor",
+    "zairon"
+];
+
+let activeRoomAudio = null;
+
+
+// ==================================
+// INICIAR MÚSICA AMBIENTAL
+// ==================================
+
+function startBackgroundMusic() {
+
+    if (!backgroundMusic || !backgroundMusic.paused) return;
+
+    backgroundMusic.play().catch(error => {
+        console.error("No se pudo reproducir la música ambiental:", error);
+    });
+
+}
+
+
+// La música comienza con la primera interacción del visitante.
+
+function enableBackgroundMusic() {
+
+    startBackgroundMusic();
+
+    document.removeEventListener(
+        "pointerdown",
+        enableBackgroundMusic,
+        true
+    );
+
+    document.removeEventListener(
+        "keydown",
+        enableBackgroundMusic,
+        true
+    );
+
+}
+
+document.addEventListener(
+    "pointerdown",
+    enableBackgroundMusic,
+    { once: true, capture: true }
+);
+
+document.addEventListener(
+    "keydown",
+    enableBackgroundMusic,
+    { once: true, capture: true }
+);
+
+
+// ==================================
+// DETENER LOS AUDIOS DE HABITACIONES
+// ==================================
+
+function stopRoomAudios() {
+
+    roomAudioNames.forEach(name => {
+
+        const audio = document.getElementById(`audio-${name}`);
+
+        if (!audio) return;
+
+        audio.pause();
+        audio.currentTime = 0;
+        audio.onended = null;
+
+    });
+
+    activeRoomAudio = null;
+
+}
+
+
+// ==================================
+// REPRODUCIR AUDIO DE UNA HABITACIÓN
 // ==================================
 
 function playDoorAudio(doorName) {
@@ -39,10 +130,36 @@ function playDoorAudio(doorName) {
 
     if (!audio) return;
 
+    // Interrumpir cualquier audio anterior.
+    stopRoomAudios();
+
+    // Pausar la música ambiental.
+    if (backgroundMusic) {
+        backgroundMusic.pause();
+    }
+
     audio.currentTime = 0;
+    activeRoomAudio = audio;
+
+    // Cuando termine el efecto, recuperar la música ambiental.
+    audio.onended = () => {
+
+        if (activeRoomAudio !== audio) return;
+
+        activeRoomAudio = null;
+        startBackgroundMusic();
+
+    };
 
     audio.play().catch(error => {
+
         console.error("No se pudo reproducir el audio:", error);
+
+        if (activeRoomAudio === audio) {
+            activeRoomAudio = null;
+            startBackgroundMusic();
+        }
+
     });
 
 }
@@ -55,6 +172,7 @@ function playDoorAudio(doorName) {
 const doorButtons = document.querySelectorAll("[data-door]");
 
 doorButtons.forEach(button => {
+
     button.addEventListener("click", () => {
 
         const doorName = button.dataset.door;
@@ -65,12 +183,11 @@ doorButtons.forEach(button => {
         showDoorMessage(doorName, door.message);
         updateArmyMessage(door.army);
 
-        // Reproducir sonidos de Ambia y Rubén
-        if (doorName === "ambia" || doorName === "ruben") {
-            playDoorAudio(doorName);
-        }
+        // Reproducir el audio de la habitación correspondiente.
+        playDoorAudio(doorName);
 
     });
+
 });
 
 
@@ -125,7 +242,9 @@ if (zaironButton && zaironInput) {
             messageBox.textContent = "Introduce un código de autorización.";
             messageBox.classList.add("visible");
 
-            updateArmyMessage("No ha introducido ningún código. ¿Está intentando adivinarlo?");
+            updateArmyMessage(
+                "No ha introducido ningún código. ¿Está intentando adivinarlo?"
+            );
 
             return;
         }
@@ -138,6 +257,9 @@ if (zaironButton && zaironInput) {
         updateArmyMessage(
             "Sientes una torreta apuntándote y una A.R.M.Y con ganas de disparar si accedes ahí."
         );
+
+        // Despliegue de la torreta.
+        playDoorAudio("zairon");
 
         zaironInput.value = "";
 

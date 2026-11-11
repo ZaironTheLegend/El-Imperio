@@ -1,0 +1,260 @@
+
+/* ==================================
+   COCINA - ESTILO GENERAL
+================================== */
+
+.kitchen-page {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at top, #29211c 0%, #11100f 50%, #090909 100%);
+    color: #e8e0d3;
+}
+
+.kitchen-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 7%;
+    border-bottom: 1px solid rgba(190, 151, 83, 0.25);
+    background: rgba(8, 8, 8, 0.8);
+}
+
+.kitchen-container {
+    width: min(1100px, 88%);
+    margin: auto;
+}
+
+.kitchen-hero {
+    padding: 100px 0 75px;
+    max-width: 780px;
+}
+
+.kitchen-hero h1 {
+    margin: 15px 0;
+    color: #e4c58e;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    letter-spacing: 5px;
+}
+
+.kitchen-hero p:not(.section-tag) {
+    color: #bcb3a7;
+    line-height: 1.8;
+}
+
+.kitchen-line {
+    width: 85px;
+    height: 2px;
+    margin: 25px 0;
+    background: #c7a66b;
+}
+
+.kitchen-status {
+    display: inline-block;
+    margin-top: 25px;
+    color: #8fc99a;
+    font-size: 0.75rem;
+    letter-spacing: 1.5px;
+}
+
+.kitchen-information {
+    margin: 30px 0 70px;
+}
+
+.kitchen-panel {
+    padding: 35px;
+    border: 1px solid rgba(190, 151, 83, 0.3);
+    border-radius: 5px;
+    background: linear-gradient(145deg, #211e1a, #111110 75%);
+}
+
+.panel-label {
+    color: #b78d4e;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+}
+
+.kitchen-panel h3 {
+    margin: 20px 0 12px;
+    color: #e5d3b2;
+    letter-spacing: 2px;
+}
+
+.kitchen-panel p {
+    color: #b5ada2;
+    line-height: 1.8;
+}
+
+.kitchen-back {
+    padding: 30px 0 70px;
+}
+
+.kitchen-back a,
+.kitchen-header a {
+    color: #c7a66b;
+    text-decoration: none;
+    letter-spacing: 1px;
+}
+
+.kitchen-back a:hover,
+.kitchen-header a:hover {
+    color: #fff0c9;
+}
+
+.kitchen-footer {
+    padding: 25px;
+    border-top: 1px solid rgba(190, 151, 83, 0.2);
+    color: #766b5b;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .kitchen-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .kitchen-hero {
+        padding-top: 60px;
+    }
+}
+
+
+/* ==================================
+   NEVERA Y NEXTOR
+================================== */
+
+.fridge-area {
+    margin-top: 30px;
+    padding: 30px;
+    border: 1px solid rgba(120, 185, 210, 0.3);
+    border-radius: 5px;
+    background: linear-gradient(145deg, #19252a, #101719);
+}
+
+.fridge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(120, 185, 210, 0.2);
+}
+
+.fridge-status {
+    color: #8dd7f2;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+}
+
+.fridge-content {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding-top: 25px;
+}
+
+.fridge-symbol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 75px;
+    height: 75px;
+    border: 1px solid rgba(141, 215, 242, 0.3);
+    border-radius: 5px;
+    color: #8dd7f2;
+    font-size: 2.5rem;
+}
+
+.fridge-text h3 {
+    color: #d5eaf0;
+    margin-bottom: 12px;
+}
+
+.fridge-text p {
+    color: #b5c2c6;
+    line-height: 1.7;
+}
+
+.sleeping-status {
+    display: inline-block;
+    margin-top: 15px;
+    color: #8dd7f2;
+    font-size: 0.7rem;
+    letter-spacing: 1.5px;
+}
+
+
+/* ==================================
+   ADVERTENCIA DE A.R.M.Y
+================================== */
+
+.kitchen-army-warning {
+    margin-top: 30px;
+    padding: 35px;
+    border: 1px solid rgba(180, 55, 55, 0.5);
+    border-radius: 5px;
+    background: rgba(100, 20, 20, 0.12);
+    text-align: center;
+}
+
+.kitchen-army-warning .warning-icon {
+    color: #d45b50;
+    font-size: 2.2rem;
+}
+
+.kitchen-army-warning .warning-label {
+    display: block;
+    margin: 15px 0;
+    color: #d45b50;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+}
+
+.kitchen-army-warning h3 {
+    color: #eee1d0;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    margin: 20px 0;
+}
+
+.kitchen-army-warning p {
+    color: #b9b9b9;
+    line-height: 1.7;
+}
+
+.kitchen-army-warning .warning-line {
+    width: 65px;
+    height: 2px;
+    background: #b9473e;
+    margin: 20px auto;
+}
+
+.kitchen-army-warning .warning-signature {
+    display: block;
+    color: #d8b46a;
+    margin-top: 25px;
+    font-size: 0.8rem;
+}
+
+
+/* ==================================
+   RESPONSIVE
+================================== */
+
+@media (max-width: 600px) {
+
+    .fridge-content {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .fridge-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+}
