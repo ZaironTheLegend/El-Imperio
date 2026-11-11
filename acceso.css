@@ -1,0 +1,182 @@
+
+/* =====================================
+   EL IMPERIO - PANTALLA DE ACCESO
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.access-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #242124 0%,
+            #101113 65%
+        );
+
+    color: #e8e3d9;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.access-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 45px;
+
+    background: #18191c;
+    border: 1px solid var(--profile-border, rgba(198, 161, 91, 0.3));
+
+    box-shadow:
+        0 0 50px rgba(0, 0, 0, 0.5),
+        inset 0 0 25px var(--profile-glow, rgba(198, 161, 91, 0.025));
+
+    text-align: center;
+}
+
+.access-symbol {
+    color: var(--profile-color, #c6a15b);
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.access-eyebrow {
+    color: var(--profile-color, #c6a15b);
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.access-container h1 {
+    margin-top: 15px;
+    font-size: 32px;
+    font-weight: normal;
+    letter-spacing: 3px;
+}
+
+.access-line {
+    width: 70px;
+    height: 2px;
+    margin: 22px auto;
+    background: var(--profile-color, #c6a15b);
+}
+
+.access-description {
+    margin-bottom: 35px;
+    color: #a5a19a;
+    font-size: 13px;
+}
+
+#accessForm {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+#accessForm label {
+    margin-bottom: 9px;
+    color: var(--profile-color, #c6a15b);
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+#accessForm select,
+#accessForm input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 23px;
+
+    background: #101113;
+    border: 1px solid #444047;
+    color: #e8e3d9;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    outline: none;
+}
+
+#accessForm select:focus,
+#accessForm input:focus {
+    border-color: var(--profile-color, #c6a15b);
+}
+
+#accessButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 15px 18px;
+
+    background: transparent;
+    border: 1px solid var(--profile-color, #c6a15b);
+    color: var(--profile-color, #e2c27e);
+
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#accessButton:hover {
+    background: var(--profile-color, #c6a15b);
+    color: #101113;
+}
+
+.access-feedback {
+    min-height: 25px;
+    margin-top: 18px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+}
+
+.access-feedback.error {
+    color: #d46b6b;
+}
+
+.access-feedback.success {
+    color: #70b77e;
+}
+
+.access-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 35px;
+    padding-top: 18px;
+
+    border-top: 1px solid var(--profile-border, rgba(198, 161, 91, 0.15));
+
+    color: #77736c;
+    font-family: Arial, sans-serif;
+    font-size: 8px;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 500px) {
+
+    .access-container {
+        padding: 30px 22px;
+    }
+
+    .access-container h1 {
+        font-size: 26px;
+    }
+
+    .access-footer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}

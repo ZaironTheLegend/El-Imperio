@@ -534,6 +534,39 @@ const transportDescription = document.getElementById("transportDescription");
 
 const nextLevelButton = document.getElementById("nextLevelButton");
 
+
+// =============================================
+// VERIFICACIÓN ESPECIAL · NIVEL 7
+// =============================================
+
+const level7Verification = document.getElementById("level7Verification");
+
+const level7NumericCode = document.getElementById("level7NumericCode");
+const level7NumericButton = document.getElementById("level7NumericButton");
+const level7NumericFeedback = document.getElementById("level7NumericFeedback");
+
+const level7AlphanumericCode = document.getElementById("level7AlphanumericCode");
+const level7AlphanumericButton = document.getElementById("level7AlphanumericButton");
+const level7AlphanumericFeedback = document.getElementById("level7AlphanumericFeedback");
+
+const level7BloodButton = document.getElementById("level7BloodButton");
+const level7BloodFeedback = document.getElementById("level7BloodFeedback");
+const level7BloodScanner = document.getElementById("level7BloodScanner");
+const level7ScannerStatus = document.getElementById("level7ScannerStatus");
+
+const level7VerificationOne = document.getElementById("level7VerificationOne");
+const level7VerificationTwo = document.getElementById("level7VerificationTwo");
+const level7VerificationThree = document.getElementById("level7VerificationThree");
+
+const level7VerificationProgress = document.getElementById("level7VerificationProgress");
+
+const level7EnterButton = document.getElementById("level7EnterButton");
+const level7CancelButton = document.getElementById("level7CancelButton");
+
+let level7CompletedVerifications = 0;
+let level7Authorized = false;
+
+
 // =============================================
 // BÓVEDA DE DINERO · RECONOCIMIENTO OCULAR
 // =============================================
@@ -581,6 +614,194 @@ vaultScanButton.addEventListener("click", () => {
 
 });
 
+
+// =============================================
+// NIVEL 7 · PROTOCOLO DE IDENTIFICACIÓN
+// =============================================
+
+const LEVEL7_NUMERIC_PASSWORD = "2427";
+const LEVEL7_ALPHANUMERIC_PASSWORD = "#99FF90";
+
+
+// ACTUALIZAR PROGRESO
+
+function updateLevel7Progress() {
+
+    level7VerificationProgress.textContent =
+        `VERIFICACIONES COMPLETADAS: ${level7CompletedVerifications} / 3`;
+
+}
+
+
+// VERIFICACIÓN 1 · CÓDIGO NUMÉRICO
+
+level7NumericButton.addEventListener("click", () => {
+
+    const enteredCode = level7NumericCode.value.trim();
+
+    if (enteredCode === LEVEL7_NUMERIC_PASSWORD) {
+
+        level7NumericFeedback.textContent =
+            "IDENTIFICACIÓN NUMÉRICA ACEPTADA.";
+
+        level7NumericFeedback.className =
+            "verification-feedback success";
+
+        level7NumericButton.textContent = "VERIFICACIÓN COMPLETADA";
+        level7NumericButton.disabled = true;
+        level7NumericCode.disabled = true;
+
+        level7VerificationOne.classList.add("completed");
+        level7VerificationTwo.classList.remove("locked");
+
+        level7AlphanumericCode.disabled = false;
+        level7AlphanumericButton.disabled = false;
+
+        level7CompletedVerifications++;
+        updateLevel7Progress();
+
+    } else {
+
+        level7NumericFeedback.textContent =
+            "CÓDIGO INCORRECTO. ACCESO NO VALIDADO.";
+
+        level7NumericFeedback.className =
+            "verification-feedback error";
+
+        level7NumericCode.value = "";
+        level7NumericCode.focus();
+
+    }
+
+});
+
+
+// VERIFICACIÓN 2 · CÓDIGO ALFANUMÉRICO
+
+level7AlphanumericButton.addEventListener("click", () => {
+
+    const enteredCode = level7AlphanumericCode.value.trim();
+
+    if (enteredCode === LEVEL7_ALPHANUMERIC_PASSWORD) {
+
+        level7AlphanumericFeedback.textContent =
+            "CLAVE ALFANUMÉRICA ACEPTADA.";
+
+        level7AlphanumericFeedback.className =
+            "verification-feedback success";
+
+        level7AlphanumericButton.textContent =
+            "VERIFICACIÓN COMPLETADA";
+
+        level7AlphanumericButton.disabled = true;
+        level7AlphanumericCode.disabled = true;
+
+        level7VerificationTwo.classList.add("completed");
+        level7VerificationThree.classList.remove("locked");
+
+        level7BloodButton.disabled = false;
+
+        level7CompletedVerifications++;
+        updateLevel7Progress();
+
+    } else {
+
+        level7AlphanumericFeedback.textContent =
+            "CLAVE INCORRECTA. IDENTIFICACIÓN RECHAZADA.";
+
+        level7AlphanumericFeedback.className =
+            "verification-feedback error";
+
+        level7AlphanumericCode.value = "";
+        level7AlphanumericCode.focus();
+
+    }
+
+});
+
+
+// VERIFICACIÓN 3 · ESCÁNER SANGUÍNEO
+
+level7BloodButton.addEventListener("click", () => {
+
+    level7BloodButton.disabled = true;
+
+    level7BloodScanner.classList.add("scanning");
+
+    level7ScannerStatus.textContent =
+        "ANALIZANDO MUESTRA...";
+
+    level7BloodFeedback.textContent = "";
+
+    level7BloodFeedback.className =
+        "verification-feedback";
+
+    setTimeout(() => {
+
+        level7BloodScanner.classList.remove("scanning");
+
+        level7ScannerStatus.textContent =
+            "COINCIDENCIA IDENTIFICADA";
+
+        level7BloodFeedback.textContent =
+            "IDENTIDAD DE ZAIRON CONFIRMADA.";
+
+        level7BloodFeedback.className =
+            "verification-feedback success";
+
+        level7BloodButton.textContent =
+            "VERIFICACIÓN COMPLETADA";
+
+        level7VerificationThree.classList.add("completed");
+
+        level7CompletedVerifications++;
+        updateLevel7Progress();
+
+        level7Authorized = true;
+
+        level7EnterButton.hidden = false;
+
+    }, 2500);
+
+});
+
+
+// ACCEDER AL CORAZÓN DE A.R.M.Y
+
+level7EnterButton.addEventListener("click", () => {
+
+    if (!level7Authorized) return;
+
+    level7Verification.hidden = true;
+
+    currentLevel = 6;
+
+    showLevel();
+
+    explorationSection.hidden = false;
+
+    explorationSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+});
+
+
+// CANCELAR VERIFICACIÓN
+
+level7CancelButton.addEventListener("click", () => {
+
+    level7Verification.hidden = true;
+
+    explorationSection.hidden = false;
+
+    explorationSection.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+});
 
 // =============================================
 // MOSTRAR NIVEL ACTUAL
@@ -688,7 +909,12 @@ if (currentLevel === 2) {
 
 if (currentLevel === 5) {
 
-    nextLevelButton.textContent = "ACCESO AL NIVEL 7 RESTRINGIDO";
+    nextLevelButton.textContent = "INICIAR VERIFICACIÓN DE ACCESO";
+    nextLevelButton.disabled = false;
+
+} else if (currentLevel === 6) {
+
+    nextLevelButton.textContent = "NÚCLEO DE A.R.M.Y · ACCESO CONCEDIDO";
     nextLevelButton.disabled = true;
 
 } else if (returningOnFoot && currentLevel === 3) {
@@ -730,10 +956,27 @@ nextLevelButton.addEventListener("click", () => {
         return;
     }
 
-    // El visitante no puede continuar hacia el Nivel 7.
-    if (currentLevel >= 5) {
-        return;
-    }
+    // =========================================
+// ACCESO ESPECIAL AL NIVEL 7
+// =========================================
+
+if (currentLevel === 5) {
+
+    level7Verification.hidden = false;
+    explorationSection.hidden = true;
+
+    level7Verification.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    return;
+}
+
+// No permitir avanzar más allá del Nivel 7.
+if (currentLevel >= 6) {
+    return;
+}
 
     // Avanzar al siguiente nivel.
     if (currentLevel < undergroundLevels.length - 1) {

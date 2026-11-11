@@ -1107,3 +1107,33 @@ a {
     }
 
 }
+
+/* =====================================
+   SISTEMA DE PERFILES - CERRAR SESIÓN
+===================================== */
+
+.profile-logout {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1000;
+
+    padding: 12px 18px;
+
+    background: rgba(16, 17, 19, 0.9);
+    border: 1px solid var(--profile-color, #c6a15b);
+    color: var(--profile-color, #c6a15b);
+
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.profile-logout:hover {
+    background: var(--profile-color, #c6a15b);
+    color: #101113;
+    box-shadow: 0 0 15px var(--profile-color, #c6a15b);
+}

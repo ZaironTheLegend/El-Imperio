@@ -408,6 +408,135 @@
     </section>
 
 
+<!-- =================================
+     VERIFICACIÓN DEL NIVEL 7
+================================== -->
+
+<section class="verification-section" id="level7Verification" hidden>
+
+    <div class="verification-container">
+
+        <p class="access-label">
+            PROTOCOLO DE SEGURIDAD · NIVEL 7
+        </p>
+
+        <h2>ACCESO AL CORAZÓN DE A.R.M.Y</h2>
+
+        <p class="verification-description">
+            Esta zona contiene información y sistemas confidenciales.
+            Solo Zairon dispone de autorización para acceder.
+            Es necesario superar las tres verificaciones.
+        </p>
+
+        <!-- VERIFICACIÓN 1 -->
+
+        <div class="verification-card" id="level7VerificationOne">
+
+            <span class="verification-number">01</span>
+
+            <h3>IDENTIFICACIÓN NUMÉRICA</h3>
+
+            <p>Introduce el código numérico de cuatro dígitos.</p>
+
+            <label for="level7NumericCode">CÓDIGO DE ACCESO</label>
+
+            <input
+                type="password"
+                id="level7NumericCode"
+                maxlength="4"
+                inputmode="numeric"
+                autocomplete="off"
+                placeholder="••••"
+            >
+
+            <button class="verification-button" id="level7NumericButton">
+                VERIFICAR
+            </button>
+
+            <p class="verification-feedback" id="level7NumericFeedback" aria-live="polite"></p>
+
+        </div>
+
+        <!-- VERIFICACIÓN 2 -->
+
+        <div class="verification-card locked" id="level7VerificationTwo">
+
+            <span class="verification-number">02</span>
+
+            <h3>IDENTIFICACIÓN ALFANUMÉRICA</h3>
+
+            <p>Introduce la segunda clave de seguridad.</p>
+
+            <label for="level7AlphanumericCode">CLAVE DE SEGURIDAD</label>
+
+            <input
+                type="password"
+                id="level7AlphanumericCode"
+                autocomplete="off"
+                placeholder="•••••••"
+                disabled
+            >
+
+            <button class="verification-button" id="level7AlphanumericButton" disabled>
+                VERIFICAR
+            </button>
+
+            <p class="verification-feedback" id="level7AlphanumericFeedback" aria-live="polite"></p>
+
+        </div>
+
+        <!-- VERIFICACIÓN 3 -->
+
+        <div class="verification-card locked" id="level7VerificationThree">
+
+            <span class="verification-number">03</span>
+
+            <h3>IDENTIFICACIÓN BIOLÓGICA</h3>
+
+            <p>
+                Se requiere una coincidencia sanguínea con el
+                propietario de la instalación.
+            </p>
+
+            <div class="blood-scanner" id="level7BloodScanner">
+
+                <div class="scanner-circle">
+                    <span>✦</span>
+                </div>
+
+                <p id="level7ScannerStatus">
+                    ESCÁNER BIOMÉTRICO INACTIVO
+                </p>
+
+            </div>
+
+            <button class="verification-button" id="level7BloodButton" disabled>
+                INICIAR ESCÁNER
+            </button>
+
+            <p class="verification-feedback" id="level7BloodFeedback" aria-live="polite"></p>
+
+        </div>
+
+        <div class="verification-progress">
+            <span id="level7VerificationProgress">
+                VERIFICACIONES COMPLETADAS: 0 / 3
+            </span>
+        </div>
+
+        <button class="authorization-button" id="level7EnterButton" hidden>
+            ACCEDER AL CORAZÓN DE A.R.M.Y
+        </button>
+
+        <button class="exit-button" id="level7CancelButton">
+            REGRESAR AL NIVEL 6
+        </button>
+
+    </div>
+
+</section>
+
+
     <!-- =================================
          TERMINAL DE A.R.M.Y
     ================================== -->
@@ -497,6 +626,16 @@
     <span>PROTOCOLO DE SEGURIDAD · A.R.M.Y</span>
 
 </footer>
+
+<!-- MÚSICA AMBIENTAL GLOBAL -->
+<audio
+    id="audio-imperio"
+    src="audios/imperio.mp3"
+    preload="auto"
+    loop>
+</audio>
+
+<script src="musica.js" defer></script>
 
 </body>
 </html>

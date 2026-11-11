@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#101113">
+
+    <title>El Imperio | Identificación</title>
+
+    <link rel="stylesheet" href="acceso.css">
+    <script src="acceso.js" defer></script>
+</head>
+
+<body class="access-page">
+
+    <main class="access-container">
+
+        <div class="access-symbol">✦</div>
+
+        <p class="access-eyebrow">
+            SISTEMA CENTRAL · EL IMPERIO
+        </p>
+
+        <h1>IDENTIFICACIÓN</h1>
+
+        <div class="access-line"></div>
+
+        <p class="access-description">
+            Identifíquese para acceder a las instalaciones
+            y sistemas del Imperio.
+        </p>
+
+        <form id="accessForm">
+
+            <label for="profileSelect">
+                PERFIL DE USUARIO
+            </label>
+
+            <select id="profileSelect" required>
+                <option value="">Seleccionar perfil...</option>
+                <option value="ambia">Ambia</option>
+                <option value="ruben">Rubén</option>
+                <option value="matias">Matias</option>
+                <option value="bryan">Bryan</option>
+                <option value="fran">Fran</option>
+                <option value="zairon">Zairon</option>
+                <option value="nextor">Nextor</option>
+                <option value="invitado">Invitado</option>
+            </select>
+
+            <label for="accessPassword">
+                CONTRASEÑA
+            </label>
+
+            <input
+                type="password"
+                id="accessPassword"
+                placeholder="Introduzca su contraseña..."
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit" id="accessButton">
+                AUTENTICARSE
+                <span>→</span>
+            </button>
+
+            <p id="accessFeedback" class="access-feedback"></p>
+
+        </form>
+
+        <div class="access-footer">
+            <span>ARCHIVO CENTRAL</span>
+            <span>SISTEMA DE IDENTIFICACIÓN</span>
+        </div>
+
+    </main>
+
+</body>
+</html>
